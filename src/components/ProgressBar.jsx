@@ -1,6 +1,4 @@
-import React from 'react';
-
-function ProgressBar({ percentage, label }) {
+export default function ProgressBar({ percentage, label }) {
   return (
     <div className="flex items-center gap-3">
       <div className="flex-1">
@@ -15,5 +13,3 @@ function ProgressBar({ percentage, label }) {
     </div>
   );
 }
-
-export default ProgressBar;

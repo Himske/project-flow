@@ -1,6 +1,4 @@
-import React from 'react';
-
-function AddButton({ icon, label, onClick }) {
+export default function AddButton({ icon, label, onClick }) {
   return (
     <button
       onClick={onClick}
@@ -11,5 +9,3 @@ function AddButton({ icon, label, onClick }) {
     </button>
   );
 }
-
-export default AddButton;

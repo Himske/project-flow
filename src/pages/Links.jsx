@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function Links({ searchQuery }) {
+export default function Links({ searchQuery }) {
   const [filter, setFilter] = useState('all');
 
   const links = [
@@ -14,10 +14,10 @@ function Links({ searchQuery }) {
     ? links
     : links.filter(l => l.category.toLowerCase() === filter.toLowerCase());
 
-  const getCategoryIcon = (category) => {
-    const icons = { Design: '🎨', Tools: '🔧', Docs: '📄' };
-    return icons[category] || '🔗';
-  };
+  // const getCategoryIcon = (category) => {
+  //   const icons = { Design: '🎨', Tools: '🔧', Docs: '📄' };
+  //   return icons[category] || '🔗';
+  // };
 
   return (
     <div className="p-6 space-y-6">
@@ -39,8 +39,8 @@ function Links({ searchQuery }) {
         <button
           onClick={() => setFilter('all')}
           className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === 'all'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+            ? 'bg-blue-600 text-white'
+            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
             }`}
         >
           All links {links.length}
@@ -50,8 +50,8 @@ function Links({ searchQuery }) {
             key={cat}
             onClick={() => setFilter(cat)}
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === cat
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
               }`}
           >
             {cat} {links.filter(l => l.category === cat).length}
@@ -94,5 +94,3 @@ function Links({ searchQuery }) {
     </div>
   );
 }
-
-export default Links;

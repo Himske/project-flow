@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function Notes({ searchQuery }) {
+export default function Notes({ searchQuery }) {
   const [notes, setNotes] = useState([
     {
       id: 1, title: 'Architecture Blueprint & FastAPI Integration', snippet: 'System Architecture ProjectFlow combines the responsiveness of modern React with the reliability of a Python FastAPI + SQLite backend.', content: `### System Architecture
@@ -117,5 +117,3 @@ uvicorn craftflow:app --reload
     </div>
   );
 }
-
-export default Notes;

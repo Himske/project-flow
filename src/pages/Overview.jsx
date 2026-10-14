@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import ProgressBar from '../components/ProgressBar';
 
-function Overview({ project, searchQuery }) {
+export default function Overview({ project, searchQuery }) {
   const [tasks, setTasks] = useState([
     { id: 1, title: 'Add Markdown formatting preview for project docs', tags: ['Notes', 'Markdown'], date: 'Oct 16', completed: false },
     { id: 2, title: 'Implement drag-and-drop or status toggle for board view', tags: ['Frontend', 'UI/UX'], date: 'Oct 14', completed: false },
@@ -175,5 +175,3 @@ function Overview({ project, searchQuery }) {
     </div>
   );
 }
-
-export default Overview;

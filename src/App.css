@@ -1,0 +1,42 @@
+#root {
+    min-height: 100vh;
+}
+
+.workspace-shell {
+    background:
+        radial-gradient(circle at 80% -10%, rgba(99, 102, 241, 0.12), transparent 32rem),
+        radial-gradient(circle at 15% 110%, rgba(14, 165, 233, 0.06), transparent 28rem),
+        #0d111c;
+}
+
+.workspace-grid {
+    background-image: linear-gradient(rgba(148, 163, 184, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+.sidebar-gradient {
+    background: linear-gradient(180deg, #101625 0%, #0b101a 100%);
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-rise-in {
+    animation: rise-in 420ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-rise-in {
+        animation: none;
+    }
+}

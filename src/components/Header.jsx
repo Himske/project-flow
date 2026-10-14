@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Header({ searchQuery, onSearch, quickAdd }) {
+export default function Header({ searchQuery, onSearch, quickAdd }) {
   return (
     <header className="h-14 flex items-center justify-between px-6 border-b border-gray-800 bg-gray-900">
       <nav className="text-sm text-gray-500">
@@ -33,5 +31,3 @@ function Header({ searchQuery, onSearch, quickAdd }) {
     </header>
   );
 }
-
-export default Header;
