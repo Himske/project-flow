@@ -1,0 +1,76 @@
+┌─────────────────────────────────────────────────────────────────────────┐
+│  LOGO  ProjectFlow                         Search [ ]      [+ Quick add] │
+│         PROJECT WORKSPACE                                      [JD]    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ WORKSPACE                    │  Workspace / ProjectFlow Platform        │
+│ [+ Overview]                │  ┌─────────────────────────────────────┐ │
+│ [Todos 4]  ← ACTIVE         │  │ IN PROGRESS  Updated Oct 12         │ │
+│ [Notes]                     │  └─────────────────────────────────────┘ │
+│ [Links]                     │                                       │
+│                             │  Todos                                │
+│ PROJECTS                    │  Everything captured for ProjectFlow... │
+│ [+ Projects]                │  Keep your work moving with a focused... │
+│ [⚡ ProjectFlow Platform]   │                                       │
+│ [Pulse Mobile Companion]    │  ┌─────────────────────────────────────┐ │
+│ [Obsidian UI Design T.]     │  │ Project progress                    │ │
+│ [Semantic Note Vector S.]   │  │ [████████████████████████░░░░░░]   │ │
+│                             │  │ 50%                                  │ │
+│ [Local workspace]            │  │                                      │ │
+│   [📥 Import JSON]            │  │ Add a task...                        │ │
+│   [💾 Changes saved in browser]│  │ [ ]                                  │ │
+│                              │  └─────────────────────────────────────┘ │
+│                              │  ┌─────────────────────────────────────┐ │
+│                              │  │ To do [1]                           │ │
+│                              │  │ ┌─────────────────────────────────┐ │ │
+│                              │  │ │ ○ Add Markdown formatting       │ │ │
+│                              │  │ │   preview for project docs     │ │ │
+│                              │  │ │ ────────────────────────────── │ │ │
+│                              │  │ │ Support headers, code snippets, │ │ │
+│                              │  │ │ lists, blockquotes, and more.  │ │ │
+│                              │  │ │ ────────────────────────────── │ │ │
+│                              │  │ │ [MEDIUM] [Notes] [Markdown]     │ │ │
+│                              │  │ │ 📅 Oct 16                       │ │ │
+│                              │  │ └─────────────────────────────────┘ │ │
+│                              │  │                                     │ │
+│                              │  │ ┌─────────────────────────────────┐ │ │
+│                              │  │ │ ○ Implement drag-and-drop      │ │ │
+│                              │  │ │   or status toggle for board   │ │ │
+│                              │  │ │   view                          │ │ │
+│                              │  │ │ ────────────────────────────── │ │ │
+│                              │  │ │ Ensure smooth status           │ │ │
+│                              │  │ │ transitions between Todo, In   │ │ │
+│                              │  │ │ progress, and Done states.     │ │ │
+│                              │  │ │ ────────────────────────────── │ │ │
+│                              │  │ │ [HIGH] [Frontend] [UI/UX]      │ │ │
+│                              │  │ │ 📅 Oct 14                       │ │ │
+│                              │  │ └─────────────────────────────────┘ │ │
+│                              │  │                                     │ │
+│                              │  │ ┌─────────────────────────────────┐ │ │
+│                              │  │ │ Done [2]                        │ │ │
+│                              │  │ │ ┌─────────────────────────────┐ │ │ │
+│                              │  │ │ │ ✓ Create link card favicon  │ │ │ │
+│                              │  │ │ │   auto-resolution with      │ │ │ │
+│                              │  │ │ │   fallback                  │ │ │ │
+│                              │  │ │ │ ─────────────────────────── │ │ │ │
+│                              │  │ │ │ Extract domain name from    │ │ │ │
+│                              │  │ │ │ URL and display crisp       │ │ │ │
+│                              │  │ │ │ high-resolution icons.      │ │ │ │
+│                              │  │ │ │ ─────────────────────────── │ │ │ │
+│                              │  │ │ │ [MEDIUM] [Frontend]         │ │ │ │
+│                              │  │ │ │ [Bookmarks] 📅 Oct 13       │ │ │ │
+│                              │  │ │ └─────────────────────────────┘ │ │ │
+│                              │  │ │ ┌─────────────────────────────┐ │ │ │
+│                              │  │ │ │ ✓ Setup FastAPI SQLite      │ │ │ │
+│                              │  │ │ │   database migration engine │ │ │ │
+│                              │  │ │ │ ─────────────────────────── │ │ │ │
+│                              │  │ │ │ Initialize SQLAlchemy       │ │ │ │
+│                              │  │ │ │ connection pool with thread- │ │ │ │
+│                              │  │ │ │ safety.                      │ │ │ │
+│                              │  │ │ │ ─────────────────────────── │ │ │ │
+│                              │  │ │ │ [URGENT] [Backend] [Database]│ │ │ │
+│                              │  │ │ │ 📅 Oct 11                    │ │ │ │
+│                              │  │ │ └─────────────────────────────┘ │ │ │
+│                              │  │ └─────────────────────────────────┘ │ │
+│                              │  └─────────────────────────────────────┘ │
+│                              └───────────────────────────────────────────┘
+└─────────────────────────────────────────────────────────────────────────┘

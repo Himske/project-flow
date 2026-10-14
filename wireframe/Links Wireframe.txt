@@ -1,0 +1,73 @@
+┌─────────────────────────────────────────────────────────────────────────┐
+│  LOGO  ProjectFlow                         Search [ ]      [+ Quick add] │
+│         PROJECT WORKSPACE                                      [JD]    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ WORKSPACE                    │  Workspace / ProjectFlow Platform        │
+│ [+ Overview]                │  ┌─────────────────────────────────────┐ │
+│ [Todos 4]                   │  │ IN PROGRESS  Updated Oct 12         │ │
+│ [Notes]                     │  └─────────────────────────────────────┘ │
+│ [Links]  ← ACTIVE           │                                       │
+│                             │  Links                                  │
+│ PROJECTS                    │  Everything captured for ProjectFlow... │
+│ [+ Projects]                │  Keep your work moving with a focused... │
+│ [⚡ ProjectFlow Platform]   │                                       │
+│ [Pulse Mobile Companion]    │  [+ Add link]                           │
+│ [Obsidian UI Design T.]     │  ┌─────────────────────────────────────┐ │
+│ [Semantic Note Vector S.]   │  │ All links [4]  Design [1]  Tools   │ │
+│                             │  │                                      │ │
+│ [Local workspace]            │  │  ┌─────────────────────────────────┐│ │
+│   [📥 Import JSON]            │  │  │ [T]                            ││ │
+│   [💾 Changes saved in browser]│  │  │ Tailwind CSS Modern Color     ││ │
+│                              │  │  │ Palette                       ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ tailwindcss.com               ││ │
+│                              │  │  │ Slate, Zinc, Indigo, and      ││ │
+│                              │  │  │ Violet color scales for       ││ │
+│                              │  │  │ crafting refined dark mode    ││ │
+│                              │  │  │ UIs.                          ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [Design]                      ││ │
+│                              │  │  │ #Tailwind #CSS                ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ [L]                            ││ │
+│                              │  │  │ Lucide Icons Directory          ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ lucide.dev                     ││ │
+│                              │  │  │ Clean, consistent open-source  ││ │
+│                              │  │  │ iconography for dashboard     ││ │
+│                              │  │  │ and productivity tool actions.││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [Tools]                        ││ │
+│                              │  │  │ #Icons #UI                     ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ [D]                            ││ │
+│                              │  │  │ SQLAlchemy 2.0 Unified          ││ │
+│                              │  │  │ Documentation                  ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ docs.sqlalchemy.org            ││ │
+│                              │  │  │ Modern ORM mapping,           ││ │
+│                              │  │  │ relationship mechanics, and    ││ │
+│                              │  │  │ SQLite connection pool config. ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [Docs]                         ││ │
+│                              │  │  │ #SQLite #SQLAlchemy            ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ [F]                            ││ │
+│                              │  │  │ FastAPI Official Documentation  ││ │
+│                              │  │  │ & Tutorial                     ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ fastapi.tiangolo.com           ││ │
+│                              │  │  │ Interactive API reference,     ││ │
+│                              │  │  │ dependency injection guides,   ││ │
+│                              │  │  │ and SQL databases tutorial     ││ │
+│                              │  │  │ with SQLAlchemy.              ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [Docs]                         ││ │
+│                              │  │  │ #FastAPI #Python               ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  └─────────────────────────────────────┘ │
+│                              └───────────────────────────────────────────┘
+└─────────────────────────────────────────────────────────────────────────┘

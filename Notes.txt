@@ -1,0 +1,17 @@
+This skeleton gives you:
+
+Complete component architecture mirroring the wireframes
+Responsive layout with sidebar/header/main area
+State management using React hooks
+Local storage persistence for user preferences
+Reusable components (AddButton, ProgressBar)
+Markdown rendering for notes (you'd want to add a proper markdown parser like react-markdown)
+Kanban-style todos with drag-and-drop ready (you could add react-beautiful-dnd or dnd-kit)
+
+You can now:
+
+1. Add Tailwind CSS or your preferred styling
+2. Implement actual data loading (fetch from API or JSON import)
+3. Add form validation and error handling
+4. Include proper accessibility attributes
+5. Add TypeScript for type safety

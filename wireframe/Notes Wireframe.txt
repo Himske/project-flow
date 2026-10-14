@@ -1,0 +1,88 @@
+┌─────────────────────────────────────────────────────────────────────────┐
+│  LOGO  ProjectFlow                         Search [ ]      [+ Quick add] │
+│         PROJECT WORKSPACE                                      [JD]    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ WORKSPACE                    │  Workspace / ProjectFlow Platform        │
+│ [+ Overview]                │  ┌─────────────────────────────────────┐ │
+│ [Todos 4]                   │  │ IN PROGRESS  Updated Oct 12         │ │
+│ [Notes]  ← ACTIVE           │  └─────────────────────────────────────┘ │
+│ [Links]                     │                                       │
+│                             │  Notes                                │
+│ PROJECTS                    │  Everything captured for ProjectFlow... │
+│ [+ Projects]                │  Keep your work moving with a focused... │
+│ [⚡ ProjectFlow Platform]   │                                       │
+│ [Pulse Mobile Companion]    │  [+ Add note]                          │
+│ [Obsidian UI Design T.]     │  ┌─────────────────────────────────────┐ │
+│ [Semantic Note Vector S.]   │  │ All Notes [2]                       │ │
+│                             │  │                                     │ │
+│ [Local workspace]            │  │  ┌─────────────────────────────────┐│ │
+│   [📥 Import JSON]            │  │  │ 📄 Architecture Blueprint &     ││ │
+│   [💾 Changes saved in browser]│  │  │    FastAPI Integration       ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ System Architecture ProjectFlow││ │
+│                              │  │  │ combines the responsiveness    ││ │
+│                              │  │  │ of modern React with the       ││ │
+│                              │  │  │ reliability of a Python        ││ │
+│                              │  │  │ FastAPI + SQLite backend.      ││ │
+│                              │  │  │                                     ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [📌]                             ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ 📄 Workspace UX Checklist &     ││ │
+│                              │  │  │    Best Practices              ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ Craft / Notion Inspired        ││ │
+│                              │  │  │ Principles: 1. Focus First...  ││ │
+│                              │  │  │                                     ││ │
+│                              │  │  │ ────────────────────────────── ││ │
+│                              │  │  │ [📌]                             ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │                                     │ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ MARKDOWN NOTE                   ││ │
+│                              │  │  │ Edited Oct 12                   ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  │                                     │ │
+│                              │  │  Architecture Blueprint & FastAPI   │ │
+│                              │  │  Integration                        │ │
+│                              │  │                                     │ │
+│                              │  │  ### System Architecture             │ │
+│                              │  │                                     │ │
+│                              │  │  ProjectFlow combines the            │ │
+│                              │  │  responsiveness of modern React     │ │
+│                              │  │  with the reliability of a Python   │ │
+│                              │  │  FastAPI + SQLite backend.          │ │
+│                              │  │                                     │ │
+│                              │  │  #### Key Highlights:                │ │
+│                              │  │                                     │ │
+│                              │  │  - **FastAPI Core**: Asynchronous   │ │
+│                              │  │    REST endpoints with Pydantic     │ │
+│                              │  │    validation and auto-generated    │ │
+│                              │  │    Swagger documentation at         │ │
+│                              │  │    `/docs`.                         │ │
+│                              │  │                                     │ │
+│                              │  │  - **SQLite Engine**: Zero-         │ │
+│                              │  │    configuration, file-based        │ │
+│                              │  │    persistence at `craftflow.db`    │ │
+│                              │  │    with relational integrity        │ │
+│                              │  │    (cascade deletes on foreign      │ │
+│                              │  │    keys).                            │ │
+│                              │  │                                     │ │
+│                              │  │  - **Dual-Engine Client**: Seamless │ │
+│                              │  │    operation in browser storage     │ │
+│                              │  │    when running standalone, and     │ │
+│                              │  │    instant sync when FastAPI is    │ │
+│                              │  │    booted at `http://localhost:8000`.│ │
+│                              │  │                                     │ │
+│                              │  │  ```python                           │ │
+│                              │  │  # Run local FastAPI server anytime:│ │
+│                              │  │  uvicorn craftflow:app --reload     │ │
+│                              │  │  ```                                  │ │
+│                              │  │                                     │ │
+│                              │  │  ┌─────────────────────────────────┐│ │
+│                              │  │  │ Edit  Preview  [📌]  [🗑]       ││ │
+│                              │  │  └─────────────────────────────────┘│ │
+│                              │  └─────────────────────────────────────┘ │
+│                              └───────────────────────────────────────────┘
+└─────────────────────────────────────────────────────────────────────────┘

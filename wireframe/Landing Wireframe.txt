@@ -1,0 +1,59 @@
+┌─────────────────────────────────────────────────────────────────────────┐
+│  LOGO  ProjectFlow                         Search [ ]      [+ Quick add] │
+│         PROJECT WORKSPACE                                      [JD]    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ WORKSPACE                    │  Workspace / ProjectFlow Platform        │
+│                              ├──────────────────────────────────────────┤
+│ [+ Overview]                 │                                       │
+│ [Todos 4]                    │  IN PROGRESS  Updated Oct 12            │
+│ [Notes]                      │                                       │
+│ [Links]                      │  ProjectFlow Platform                   │
+│                              │  Personal productivity workspace...     │
+│ PROJECTS                     │                                       │
+│ [+ Projects]                 │  [+ New Project]                        │
+│ [⚡ ProjectFlow Platform]    │  ┌──────────────────────────────────┐  │
+│ [Pulse Mobile Companion]    │  │ MOMENTUM                          │  │
+│ [Obsidian UI Design T.]     │  │ Your next moves                  │  │
+│ [Semantic Note Vector S.]   │  │                                   │  │
+│                              │  ├──────────────────────────────────┤  │
+│ [Local workspace]            │  │ ○ Add Markdown formatting...     │  │
+│                              │  │   Notes  Markdown  [📅 Oct 16]   │  │
+│                              │  │ ○ Implement drag-and-drop...     │  │
+│                              │  │   Frontend UI/UX  [📅 Oct 14]    │  │
+│                              │  │                                   │  │
+│                              │  │ PROJECT PULSE                    │  │
+│                              │  │ ┌─────────────────┐               │  │
+│                              │  │ │ 50%            │               │  │
+│                              │  │ │ 2 completed    │               │  │
+│                              │  │ │ 1 in progress  │               │  │
+│                              │  │ │ 1 to do        │               │  │
+│                              │  │ └─────────────────┘               │  │
+│                              │  │ [████████░░░░░░░░]                 │  │
+│                              │  └──────────────────────────────────┘  │
+│                              │                                       │
+│                              │  RECENT NOTES                          │
+│                              │  Knowledge base         [↗]            │
+│                              │  ┌─────────────────────┐               │
+│                              │  │ 📄 Architecture...  │               │
+│                              │  │   System Architecture... │          │
+│                              │  │   [📌]              │               │
+│                              │  │ └─────────────────────┘               │
+│                              │  │ ┌─────────────────────┐               │
+│                              │  │ │ 📄 Workspace UX... │               │
+│                              │  │ │   Craft / Notion... │              │
+│                              │  │ │ └─────────────────────┘               │
+│                              │  └──────────────────────────────────────┘│
+│                              │                                       │
+│                              │  LINK LIBRARY                          │
+│                              │  Saved references          [↗]         │
+│                              │  ┌──────────────────────────────────┐  │
+│                              │  │ [T] Tailwind CSS Modern...       │  │
+│                              │  │     tailwindcss.com              │  │
+│                              │  │ [L] Lucide Icons Directory...    │  │
+│                              │  │     lucide.dev                   │  │
+│                              │  │ [D] SQLAlchemy 2.0 Unified...    │  │
+│                              │  │     docs.sqlalchemy.org          │  │
+│                              │  └──────────────────────────────────┘  │
+│                              └──────────────────────────────────────────┘
+│   [📥 Import JSON]                           [💾 Changes saved in browser]
+└─────────────────────────────────────────────────────────────────────────┘
