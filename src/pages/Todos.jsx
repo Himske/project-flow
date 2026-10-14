@@ -16,16 +16,6 @@ export default function Todos({ searchQuery }) {
     t.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const getStatusColor = (status) => {
-    const colors = { 'todo': 'bg-gray-700', 'in-progress': 'bg-blue-600', 'done': 'bg-green-600' };
-    return colors[status] || 'bg-gray-700';
-  };
-
-  const getPriorityColor = (priority) => {
-    const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
-    return colors[priority] || 'bg-gray-600';
-  };
-
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -77,7 +67,7 @@ export default function Todos({ searchQuery }) {
 
       <div className="flex gap-4">
         {/* To Do Column */}
-        <div className="flex-1 min-w-[250px] bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-400">To do <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'todo').length}</span></span>
             <button className="text-gray-500 hover:text-gray-400">
@@ -92,7 +82,7 @@ export default function Todos({ searchQuery }) {
         </div>
 
         {/* In Progress Column */}
-        <div className="flex-1 min-w-[250px] bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-400">In progress <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'in-progress').length}</span></span>
             <button className="text-gray-500 hover:text-gray-400">
@@ -107,7 +97,7 @@ export default function Todos({ searchQuery }) {
         </div>
 
         {/* Done Column */}
-        <div className="flex-1 min-w-[250px] bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-400">Done <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'done').length}</span></span>
             <button className="text-gray-500 hover:text-gray-400">

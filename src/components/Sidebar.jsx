@@ -17,7 +17,7 @@ export default function Sidebar({ activeTab, onSelectTab, onSelectProject }) {
     <aside className="w-64 flex flex-col border-r border-gray-800 bg-gray-900">
       <div className="p-4 border-b border-gray-800">
         <div className="flex items-center gap-2 mb-1">
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-linear-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white text-sm">⚡</span>
           </div>
           <div>

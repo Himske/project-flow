@@ -1,8 +1,14 @@
 export default function Todo({ task }) {
+    const getStatusColor = (status) => {
+        const colors = { 'todo': 'bg-gray-700', 'in-progress': 'bg-blue-600', 'done': 'bg-green-600' };
+        return colors[status] || 'bg-gray-700';
+    };
+
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
         return colors[priority] || 'bg-gray-600';
     };
+
     return (
         <div key={task.id} className="p-3 rounded-lg bg-gray-700/50 opacity-75">
             <div className="flex items-start gap-3 mb-2">

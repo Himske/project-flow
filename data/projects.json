@@ -91,17 +91,29 @@
         {
             "id": "pulse-mobile",
             "label": "Pulse Mobile Companion",
-            "icon": "mobile"
+            "icon": "mobile",
+            "active": false,
+            "tasks": [],
+            "notes": [],
+            "links": []
         },
         {
             "id": "obsidian-tokens",
             "label": "Obsidian UI Design Tokens",
-            "icon": "palette"
+            "icon": "palette",
+            "active": false,
+            "tasks": [],
+            "notes": [],
+            "links": []
         },
         {
             "id": "semantic-search",
             "label": "Semantic Note Vector Search",
-            "icon": "brain"
+            "icon": "brain",
+            "active": false,
+            "tasks": [],
+            "notes": [],
+            "links": []
         }
     ]
 }
