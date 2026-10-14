@@ -7,30 +7,33 @@ import Overview from './pages/Overview';
 import Links from './pages/Links';
 import Notes from './pages/Notes';
 import Todos from './pages/Todos';
+import projectData from '../data/projects.json';
+
+const projects = projectData.projects;
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [selectedProject, setSelectedProject] = useState('ProjectFlow Platform');
+  const [savedData] = useState(() => {
+    const storedData = localStorage.getItem('projectflow-data');
+    return storedData ? JSON.parse(storedData) : {};
+  });
+  const [activeTab, setActiveTab] = useState(savedData.activeTab || 'overview');
+  const [selectedProjectId, setSelectedProjectId] = useState(() => {
+    const savedProject = projects.find(project =>
+      project.id === savedData.selectedProject || project.label === savedData.selectedProject
+    );
+    return savedProject?.id || projects[0].id;
+  });
   const [searchQuery, setSearchQuery] = useState('');
-
-  // Local storage persistence
-  useEffect(() => {
-    const savedData = localStorage.getItem('projectflow-data');
-    if (savedData) {
-      const parsed = JSON.parse(savedData);
-      setSelectedProject(parsed.selectedProject || 'ProjectFlow Platform');
-      setActiveTab(parsed.activeTab || 'overview');
-    }
-  }, []);
+  const selectedProject = projects.find(project => project.id === selectedProjectId) || projects[0];
 
   useEffect(() => {
     const data = {
-      selectedProject,
+      selectedProject: selectedProjectId,
       activeTab,
       timestamp: new Date().toISOString()
     };
     localStorage.setItem('projectflow-data', JSON.stringify(data));
-  }, [selectedProject, activeTab]);
+  }, [selectedProjectId, activeTab]);
 
   return (
     <Router>
@@ -38,13 +41,18 @@ export default function App() {
         <Sidebar
           activeTab={activeTab}
           onSelectTab={setActiveTab}
-          onSelectProject={setSelectedProject}
+          projects={projects}
+          selectedProjectId={selectedProject.id}
+          onSelectProject={projectId => {
+            setSelectedProjectId(projectId);
+            setActiveTab('overview');
+          }}
         />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
+            projectName={selectedProject.label}
             searchQuery={searchQuery}
             onSearch={setSearchQuery}
-            quickAdd={() => { }}
           />
           <ContentArea>
             <Routes>
@@ -61,6 +69,7 @@ export default function App() {
                 path="/links"
                 element={
                   <Links
+                    project={selectedProject}
                     searchQuery={searchQuery}
                   />
                 }
@@ -69,6 +78,7 @@ export default function App() {
                 path="/notes"
                 element={
                   <Notes
+                    project={selectedProject}
                     searchQuery={searchQuery}
                   />
                 }
@@ -77,6 +87,7 @@ export default function App() {
                 path="/todos"
                 element={
                   <Todos
+                    project={selectedProject}
                     searchQuery={searchQuery}
                   />
                 }

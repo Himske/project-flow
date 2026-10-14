@@ -1,9 +1,8 @@
-export default function Note({ note }) {
+export default function Note({ note, isSelected, onSelect }) {
     return (
         <button
-            key={note.id}
-            onClick={() => setSelectedNoteId(note.id)}
-            className={`w-full p-4 text-left hover:bg-gray-800 transition-colors ${selectedNoteId === note.id ? 'bg-gray-800' : ''
+            onClick={onSelect}
+            className={`w-full p-4 text-left hover:bg-gray-800 transition-colors ${isSelected ? 'bg-gray-800' : ''
                 }`}
         >
             <div className="flex items-start gap-2 mb-1">

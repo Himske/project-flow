@@ -1,10 +1,10 @@
-export default function Header({ searchQuery, onSearch, quickAdd }) {
+export default function Header({ projectName, searchQuery, onSearch }) {
   return (
     <header className="h-14 flex items-center justify-between px-6 border-b border-gray-800 bg-gray-900">
       <nav className="text-sm text-gray-500">
         <span>Workspace</span>
         <span className="mx-2">/</span>
-        <span className="text-gray-300">ProjectFlow Platform</span>
+        <span className="text-gray-300">{projectName}</span>
       </nav>
 
       <div className="flex items-center gap-3">

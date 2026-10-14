@@ -1,42 +1,34 @@
 import { useState } from 'react';
 import Note from '../components/Note';
 
-export default function Notes({ searchQuery }) {
-  const [notes, setNotes] = useState([
-    {
-      id: 1, title: 'Architecture Blueprint & FastAPI Integration', snippet: 'System Architecture ProjectFlow combines the responsiveness of modern React with the reliability of a Python FastAPI + SQLite backend.', content: `### System Architecture
-
-ProjectFlow combines the responsiveness of modern React with the reliability of a Python FastAPI + SQLite backend.
-
-#### Key Highlights:
-- **FastAPI Core**: Asynchronous REST endpoints with Pydantic validation and auto-generated Swagger documentation at \`/docs\`.
-- **SQLite Engine**: Zero-configuration, file-based persistence at \`craftflow.db\` with relational integrity (cascade deletes on foreign keys).
-- **Dual-Engine Client**: Seamless operation in browser storage when running standalone, and instant sync when FastAPI is booted at \`http://localhost:8000\`.
-
-\`\`\`python
-# Run local FastAPI server anytime:
-uvicorn craftflow:app --reload
-\`\`\`
-`, pinned: true, lastEdited: 'Oct 12'
-    },
-    { id: 2, title: 'Workspace UX Checklist & Best Practices', snippet: 'Craft / Notion Inspired Principles: 1. Focus First: Collapse sidebars when... ', content: 'Workspace UX Checklist and best practices for ProjectFlow.', pinned: false, lastEdited: 'Oct 10' },
-  ]);
-
-  const [selectedNoteId, setSelectedNoteId] = useState(1);
-
-  const selectedNote = notes.find(n => n.id === selectedNoteId);
+export default function Notes({ project }) {
+  const notes = project.notes || [];
+  const [selectedNoteId, setSelectedNoteId] = useState(notes[0]?.id ?? null);
+  const selectedNote = notes.find(note => note.id === selectedNoteId) || notes[0];
+  const noteContent = selectedNote?.content || selectedNote?.snippet || '';
 
   return (
     <div className="flex flex-col lg:flex-row h-full lg:h-[calc(100vh-5rem)]">
       {/* Notes List */}
       <div className="w-full lg:w-1/3 border-r border-gray-800 bg-gray-900 overflow-y-auto">
-        <div className="p-4 border-b border-gray-800">
-          <h2 className="text-sm font-medium text-gray-400 uppercase">All Notes</h2>
-          <span className="text-xs text-gray-600 ml-auto">{notes.length}</span>
+        <div className="flex items-center justify-between p-4 border-b border-gray-800">
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-medium text-gray-400 uppercase">All Notes</h2>
+            <span className="text-xs text-gray-600">{notes.length}</span>
+          </div>
+          <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20">
+            <span className="text-lg">+</span>
+            Add note
+          </button>
         </div>
         <div className="divide-y divide-gray-800">
           {notes.map(note => (
-            <Note note={note} />
+            <Note
+              key={note.id}
+              note={note}
+              isSelected={selectedNoteId === note.id}
+              onSelect={() => setSelectedNoteId(note.id)}
+            />
           ))}
         </div>
       </div>
@@ -48,7 +40,7 @@ uvicorn craftflow:app --reload
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-gray-400">MARKDOWN NOTE</span>
-                <span className="text-xs text-gray-600">Edited {selectedNote.lastEdited}</span>
+                <span className="text-xs text-gray-600">Edited {selectedNote.lastEdited || 'recently'}</span>
               </div>
               <div className="flex items-center gap-2">
                 <button className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-sm transition-colors">
@@ -63,7 +55,7 @@ uvicorn craftflow:app --reload
             </div>
             <h1 className="text-3xl font-bold text-white mb-6">{selectedNote.title}</h1>
             <div className="prose prose-invert max-w-none">
-              {selectedNote.content.split('\n').map((line, i) => {
+              {noteContent.split('\n').map((line, i) => {
                 if (line.startsWith('### ')) {
                   return <h2 key={i} className="text-xl font-semibold text-white mt-6 mb-3">{line.replace('### ', '')}</h2>;
                 }
@@ -84,7 +76,7 @@ uvicorn craftflow:app --reload
             </div>
             <div className="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between">
               <div className="text-xs text-gray-500">
-                {selectedNote.content.split(/\s+/).filter(w => w.length > 0).length} words
+                {noteContent.split(/\s+/).filter(w => w.length > 0).length} words
               </div>
               <div className="flex items-center gap-2 text-xs text-gray-500">
                 <span>Created Oct 12</span>
@@ -95,7 +87,7 @@ uvicorn craftflow:app --reload
           </>
         ) : (
           <div className="flex items-center justify-center h-full text-gray-500">
-            Select a note to view
+            No notes for {project.label} yet.
           </div>
         )}
       </div>

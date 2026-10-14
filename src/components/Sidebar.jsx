@@ -1,16 +1,12 @@
-export default function Sidebar({ activeTab, onSelectTab, onSelectProject }) {
-  const workspaceItems = [
-    { id: 'overview', label: 'Overview', icon: 'grid' },
-    { id: 'todos', label: 'Todos', icon: 'list', badge: 4 },
-    { id: 'notes', label: 'Notes', icon: 'file-text' },
-    { id: 'links', label: 'Links', icon: 'bookmark' },
-  ];
+import { useNavigate } from 'react-router-dom';
 
-  const projects = [
-    { id: 'projectflow-platform', label: 'ProjectFlow Platform', icon: 'bolt', active: true },
-    { id: 'pulse-mobile', label: 'Pulse Mobile Companion', icon: 'mobile' },
-    { id: 'obsidian-tokens', label: 'Obsidian UI Design Tokens', icon: 'palette' },
-    { id: 'semantic-search', label: 'Semantic Note Vector Search', icon: 'brain' },
+export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject }) {
+  const navigate = useNavigate();
+  const workspaceItems = [
+    { id: 'overview', label: 'Overview', icon: 'grid', path: '/' },
+    { id: 'todos', label: 'Todos', icon: 'list', badge: 4, path: '/todos' },
+    { id: 'notes', label: 'Notes', icon: 'file-text', path: '/notes' },
+    { id: 'links', label: 'Links', icon: 'bookmark', path: '/links' },
   ];
 
   return (
@@ -39,7 +35,10 @@ export default function Sidebar({ activeTab, onSelectTab, onSelectProject }) {
             {workspaceItems.map(item => (
               <button
                 key={item.id}
-                onClick={() => onSelectTab(item.id)}
+                onClick={() => {
+                  onSelectTab(item.id);
+                  navigate(item.path);
+                }}
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${activeTab === item.id
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
@@ -65,8 +64,11 @@ export default function Sidebar({ activeTab, onSelectTab, onSelectProject }) {
             {projects.map(project => (
               <button
                 key={project.id}
-                onClick={() => onSelectProject(project.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${project.active
+                onClick={() => {
+                  onSelectProject(project.id);
+                  navigate('/');
+                }}
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${selectedProjectId === project.id
                   ? 'bg-gray-800 text-white'
                   : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
                   }`}
@@ -75,7 +77,7 @@ export default function Sidebar({ activeTab, onSelectTab, onSelectProject }) {
                   {project.icon}
                 </span>
                 <span className="text-sm font-medium truncate">{project.label}</span>
-                {project.active && (
+                {selectedProjectId === project.id && (
                   <span className="ml-auto w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                 )}
               </button>

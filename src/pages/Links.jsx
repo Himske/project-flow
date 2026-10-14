@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import Link from '../components/Link';
 
-export default function Links({ searchQuery }) {
+export default function Links({ project }) {
   const [filter, setFilter] = useState('all');
-
-  const links = [
-    { id: 1, title: 'Tailwind CSS Modern Color Palette', url: 'tailwindcss.com', description: 'Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.', category: 'Design', tags: ['Tailwind', 'CSS'] },
-    { id: 2, title: 'Lucide Icons Directory', url: 'lucide.dev', description: 'Clean, consistent open-source iconography for dashboard and productivity tool actions.', category: 'Tools', tags: ['Icons', 'UI'] },
-    { id: 3, title: 'SQLAlchemy 2.0 Unified Documentation', url: 'docs.sqlalchemy.org', description: 'Modern ORM mapping, relationship mechanics, and SQLite connection pool configuration.', category: 'Docs', tags: ['SQLite', 'SQLAlchemy'] },
-    { id: 4, title: 'FastAPI Official Documentation & Tutorial', url: 'fastapi.tiangolo.com', description: 'Interactive API reference, dependency injection guides, and SQL databases tutorial with SQLAlchemy.', category: 'Docs', tags: ['FastAPI', 'Python'] },
-  ];
+  const links = project.links || [];
+  const categories = [...new Set(links.map(link => link.category).filter(Boolean))];
 
   const filteredLinks = filter === 'all'
     ? links
@@ -25,7 +20,7 @@ export default function Links({ searchQuery }) {
       <div>
         <h1 className="text-4xl font-bold text-white mb-2">Links</h1>
         <p className="text-gray-400">
-          Everything captured for {searchQuery || 'ProjectFlow Platform'}. Keep your work moving with a focused, calm workspace.
+          Everything captured for {project.label}. Keep your work moving with a focused, calm workspace.
         </p>
       </div>
 
@@ -46,7 +41,7 @@ export default function Links({ searchQuery }) {
         >
           All links {links.length}
         </button>
-        {['Design', 'Tools', 'Docs'].map(cat => (
+        {categories.map(cat => (
           <button
             key={cat}
             onClick={() => setFilter(cat)}
@@ -62,9 +57,10 @@ export default function Links({ searchQuery }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredLinks.map(link => (
-          <Link link={link} />
+          <Link key={link.id} link={link} />
         ))}
       </div>
+      {!filteredLinks.length && <p className="text-sm text-gray-500">No links for this project yet.</p>}
     </div>
   );
 }
