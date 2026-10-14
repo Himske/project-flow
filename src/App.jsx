@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -8,7 +8,7 @@ import Links from './pages/Links';
 import Notes from './pages/Notes';
 import Todos from './pages/Todos';
 
-function App() {
+export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedProject, setSelectedProject] = useState('ProjectFlow Platform');
   const [searchQuery, setSearchQuery] = useState('');
@@ -89,5 +89,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import ProgressBar from '../components/ProgressBar';
+import TodoOverview from '../components/TodoOverview'
+import NoteOverview from '../components/NoteOverview';
+import LinkOverview from '../components/LinkOverview'
 
 export default function Overview({ project, searchQuery }) {
   const [tasks, setTasks] = useState([
@@ -44,30 +47,15 @@ export default function Overview({ project, searchQuery }) {
         {/* Your Next Moves */}
         <div className="lg:col-span-2 bg-gray-800 rounded-xl p-5 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-white">Your next moves</h2>
+            <h2 className="text-sm font-medium text-gray-400">MOMENTUM</h2>
             <button className="text-sm text-blue-400 hover:text-blue-300">
               View all ↗
             </button>
           </div>
+          <h3 className="text-lg font-semibold text-white mb-3">Your next moves</h3>
           <div className="space-y-3">
             {tasks.map(task => (
-              <div key={task.id} className="flex items-start gap-3 p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
-                <input
-                  type="checkbox"
-                  className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm text-gray-200 truncate">{task.title}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    {task.tags.map(tag => (
-                      <span key={tag} className="px-2 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="text-xs text-gray-500 ml-auto">📅 {task.date}</span>
-                  </div>
-                </div>
-              </div>
+              <TodoOverview task={task} />
             ))}
           </div>
         </div>
@@ -116,20 +104,7 @@ export default function Overview({ project, searchQuery }) {
         <h3 className="text-lg font-semibold text-white mb-3">Knowledge base</h3>
         <div className="space-y-3">
           {notes.map(note => (
-            <div key={note.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">📄</span>
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-200 truncate">{note.title}</p>
-                    <p className="text-xs text-gray-500 truncate">{note.snippet}</p>
-                  </div>
-                </div>
-                {note.pinned && (
-                  <span className="text-yellow-500 text-sm">📌</span>
-                )}
-              </div>
-            </div>
+            <NoteOverview note={note} />
           ))}
         </div>
       </div>
@@ -145,30 +120,7 @@ export default function Overview({ project, searchQuery }) {
         <h3 className="text-lg font-semibold text-white mb-3">Saved references</h3>
         <div className="space-y-3">
           {links.map(link => (
-            <div key={link.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center text-sm font-medium text-gray-400">
-                    {link.title[0]}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-200 truncate">{link.title}</p>
-                    <p className="text-xs text-gray-500 truncate">{link.url}</p>
-                  </div>
-                </div>
-                <button className="text-gray-500 hover:text-gray-300">
-                  ↗
-                </button>
-              </div>
-              <div className="flex items-center justify-between mt-2">
-                <span className="px-2 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{link.category}</span>
-                <div className="flex items-center gap-2">
-                  {link.tags.map(tag => (
-                    <span key={tag} className="text-xs text-gray-500">#{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <LinkOverview link={link} />
           ))}
         </div>
       </div>

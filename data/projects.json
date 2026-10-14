@@ -1,0 +1,107 @@
+{
+    "projects": [
+        {
+            "id": "projectflow-platform",
+            "label": "ProjectFlow Platform",
+            "icon": "bolt",
+            "active": true,
+            "tasks": [
+                {
+                    "id": 1,
+                    "title": "Add Markdown formatting preview for project docs",
+                    "tags": [
+                        "Notes",
+                        "Markdown"
+                    ],
+                    "date": "Oct 16",
+                    "completed": false
+                },
+                {
+                    "id": 2,
+                    "title": "Implement drag-and-drop or status toggle for board view",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX"
+                    ],
+                    "date": "Oct 14",
+                    "completed": false
+                }
+            ],
+            "notes": [
+                {
+                    "id": 1,
+                    "title": "Architecture Blueprint & FastAPI Integration",
+                    "snippet": "System Architecture ProjectFlow combines the responsiveness of...",
+                    "pinned": true
+                },
+                {
+                    "id": 2,
+                    "title": "Workspace UX Checklist & Best Practices",
+                    "snippet": "Craft / Notion Inspired Principles: 1. Focus First: Collapse sidebars when...",
+                    "pinned": false
+                }
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "title": "Tailwind CSS Modern Color Palette",
+                    "url": "tailwindcss.com",
+                    "description": "Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.",
+                    "category": "Design",
+                    "tags": [
+                        "Tailwind",
+                        "CSS"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Lucide Icons Directory",
+                    "url": "lucide.dev",
+                    "description": "Clean, consistent open-source iconography for dashboard and productivity tool actions.",
+                    "category": "Tools",
+                    "tags": [
+                        "Icons",
+                        "UI"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "SQLAlchemy 2.0 Unified Documentation",
+                    "url": "docs.sqlalchemy.org",
+                    "description": "Modern ORM mapping, relationship mechanics, and SQLite connection pool configuration.",
+                    "category": "Docs",
+                    "tags": [
+                        "SQLite",
+                        "SQLAlchemy"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "FastAPI Official Documentation & Tutorial",
+                    "url": "fastapi.tiangolo.com",
+                    "description": "Interactive API reference, dependency injection guides, and SQL databases tutorial with SQLAlchemy.",
+                    "category": "Docs",
+                    "tags": [
+                        "FastAPI",
+                        "Python"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "pulse-mobile",
+            "label": "Pulse Mobile Companion",
+            "icon": "mobile"
+        },
+        {
+            "id": "obsidian-tokens",
+            "label": "Obsidian UI Design Tokens",
+            "icon": "palette"
+        },
+        {
+            "id": "semantic-search",
+            "label": "Semantic Note Vector Search",
+            "icon": "brain"
+        }
+    ]
+}

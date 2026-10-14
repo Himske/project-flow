@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Todo from '../components/Todo';
 
 export default function Todos({ searchQuery }) {
   const [tasks, setTasks] = useState([
@@ -85,33 +86,7 @@ export default function Todos({ searchQuery }) {
           </div>
           <div className="space-y-3">
             {tasks.filter(t => t.status === 'todo').map(task => (
-              <div key={task.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
-                <div className="flex items-start gap-3 mb-2">
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => { }}
-                    className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-200 truncate">{task.title}</p>
-                    <p className="text-xs text-gray-500 line-clamp-2">{task.description}</p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(task.priority)}`}>
-                    {task.priority}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {task.tags.map(tag => (
-                      <span key={tag} className="px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="text-xs text-gray-500 ml-auto">📅 {task.date}</span>
-                  </div>
-                </div>
-              </div>
+              <Todo task={task} />
             ))}
           </div>
         </div>
@@ -126,33 +101,7 @@ export default function Todos({ searchQuery }) {
           </div>
           <div className="space-y-3">
             {tasks.filter(t => t.status === 'in-progress').map(task => (
-              <div key={task.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
-                <div className="flex items-start gap-3 mb-2">
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => { }}
-                    className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-200 truncate">{task.title}</p>
-                    <p className="text-xs text-gray-500 line-clamp-2">{task.description}</p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(task.priority)}`}>
-                    {task.priority}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {task.tags.map(tag => (
-                      <span key={tag} className="px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="text-xs text-gray-500 ml-auto">📅 {task.date}</span>
-                  </div>
-                </div>
-              </div>
+              <Todo task={task} />
             ))}
           </div>
         </div>
@@ -167,33 +116,7 @@ export default function Todos({ searchQuery }) {
           </div>
           <div className="space-y-3">
             {tasks.filter(t => t.status === 'done').map(task => (
-              <div key={task.id} className="p-3 rounded-lg bg-gray-700/50 opacity-75">
-                <div className="flex items-start gap-3 mb-2">
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => { }}
-                    className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-200 truncate">{task.title}</p>
-                    <p className="text-xs text-gray-500 line-clamp-2">{task.description}</p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(task.priority)}`}>
-                    {task.priority}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {task.tags.map(tag => (
-                      <span key={tag} className="px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="text-xs text-gray-500 ml-auto">📅 {task.date}</span>
-                  </div>
-                </div>
-              </div>
+              <Todo task={task} />
             ))}
           </div>
         </div>
