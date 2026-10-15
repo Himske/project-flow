@@ -62,6 +62,7 @@ export default function App() {
                   <Overview
                     project={selectedProject}
                     searchQuery={searchQuery}
+                    onSelectTab={setActiveTab}
                   />
                 }
               />

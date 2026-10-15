@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import AddButton from '../components/AddButton';
-import ProgressBar from '../components/ProgressBar';
 import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
 
-export default function Overview({ project }) {
+export default function Overview({ project, onSelectTab }) {
+  const navigate = useNavigate();
   const { tasks = [], notes = [], links = [] } = project;
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
@@ -42,7 +43,13 @@ export default function Overview({ project }) {
         <div className="lg:col-span-2 bg-gray-800 rounded-xl p-5 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-medium text-gray-400">MOMENTUM</h2>
-            <button className="text-sm text-blue-400 hover:text-blue-300">
+            <button
+              onClick={() => {
+                onSelectTab('todos');
+                navigate('/todos');
+              }}
+              className="text-sm text-blue-400 hover:text-blue-300"
+            >
               View all ↗
             </button>
           </div>
@@ -77,12 +84,11 @@ export default function Overview({ project }) {
                 <span className="text-2xl font-bold text-white">{progress}%</span>
               </div>
             </div>
-            <div className="space-y-1 text-center">
+            <div className="space-y-1 text-left">
               <p className="text-sm text-gray-400"><span className="text-white font-medium">{completedTasks}</span> completed</p>
               <p className="text-sm text-gray-400"><span className="text-white font-medium">{inProgressTasks}</span> in progress</p>
               <p className="text-sm text-gray-400"><span className="text-white font-medium">{todoTasks}</span> to do</p>
             </div>
-            <ProgressBar percentage={progress} />
           </div>
         </div>
       </div>
@@ -92,8 +98,14 @@ export default function Overview({ project }) {
         <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-medium text-gray-400">RECENT NOTES</h2>
-            <button className="text-sm text-blue-400 hover:text-blue-300">
-              ↗
+            <button
+              onClick={() => {
+                onSelectTab('notes');
+                navigate('/notes');
+              }}
+              className="text-sm text-blue-400 hover:text-blue-300"
+            >
+              View all ↗
             </button>
           </div>
           <h3 className="text-lg font-semibold text-white mb-3">Knowledge base</h3>
@@ -108,8 +120,14 @@ export default function Overview({ project }) {
         <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-medium text-gray-400">LINK LIBRARY</h2>
-            <button className="text-sm text-blue-400 hover:text-blue-300">
-              ↗
+            <button
+              onClick={() => {
+                onSelectTab('links');
+                navigate('/links');
+              }}
+              className="text-sm text-blue-400 hover:text-blue-300"
+            >
+              View all ↗
             </button>
           </div>
           <h3 className="text-lg font-semibold text-white mb-3">Saved references</h3>
