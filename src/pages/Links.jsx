@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AddButton from '../components/AddButton';
 import Link from '../components/Link';
 
 export default function Links({ project }) {
@@ -25,10 +26,7 @@ export default function Links({ project }) {
       </div>
 
       <div className="flex items-center justify-end">
-        <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20">
-          <span className="text-lg">+</span>
-          Add link
-        </button>
+        <AddButton icon="+" label="Add link" />
       </div>
 
       <div className="flex items-center gap-2">

@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import AddButton from '../components/AddButton';
 import Todo from '../components/Todo';
 
-export default function Todos({ project, searchQuery }) {
+export default function Todos({ project, searchQuery, onAddTask }) {
   const tasks = (project.tasks || []).map(task => ({
     ...task,
     description: task.description || '',
@@ -12,6 +13,20 @@ export default function Todos({ project, searchQuery }) {
     status: task.status || (task.completed ? 'done' : 'todo'),
   }));
   const [newTask, setNewTask] = useState('');
+  const handleAddTask = () => {
+    const title = newTask.trim();
+    if (!title) return;
+
+    onAddTask({
+      id: tasks.length + 1,
+      title,
+      tags: [],
+      priority: 'MEDIUM',
+      completed: false,
+      date: '',
+    });
+    setNewTask('');
+  };
   const taskTags = [...new Set(tasks.flatMap(task => task.tags))];
   const completedTasks = tasks.filter(task => task.completed).length;
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
@@ -56,9 +71,7 @@ export default function Todos({ project, searchQuery }) {
           onChange={(e) => setNewTask(e.target.value)}
           className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
-        <button className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-          <span className="text-xl">+</span>
-        </button>
+        <AddButton icon="+" label="Add task" onClick={handleAddTask} />
       </div>
 
       <div className="flex items-center gap-2">

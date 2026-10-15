@@ -9,13 +9,16 @@ import Notes from './pages/Notes';
 import Todos from './pages/Todos';
 import projectData from '../data/projects.json';
 
-const projects = projectData.projects;
+const initialProjects = projectData.projects;
 
 export default function App() {
   const [savedData] = useState(() => {
     const storedData = localStorage.getItem('projectflow-data');
     return storedData ? JSON.parse(storedData) : {};
   });
+  const [projects, setProjects] = useState(() =>
+    Array.isArray(savedData.projects) ? savedData.projects : initialProjects
+  );
   const [activeTab, setActiveTab] = useState(savedData.activeTab || 'overview');
   const [selectedProjectId, setSelectedProjectId] = useState(() => {
     const savedProject = projects.find(project =>
@@ -28,12 +31,13 @@ export default function App() {
 
   useEffect(() => {
     const data = {
+      projects,
       selectedProject: selectedProjectId,
       activeTab,
       timestamp: new Date().toISOString()
     };
     localStorage.setItem('projectflow-data', JSON.stringify(data));
-  }, [selectedProjectId, activeTab]);
+  }, [projects, selectedProjectId, activeTab]);
 
   return (
     <Router>
@@ -90,6 +94,13 @@ export default function App() {
                   <Todos
                     project={selectedProject}
                     searchQuery={searchQuery}
+                    onAddTask={task => {
+                      setProjects(currentProjects => currentProjects.map(project =>
+                        project.id === selectedProject.id
+                          ? { ...project, tasks: [...(project.tasks || []), task] }
+                          : project
+                      ));
+                    }}
                   />
                 }
               />

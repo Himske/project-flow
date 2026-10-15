@@ -1,3 +1,4 @@
+import AddButton from './AddButton'
 export default function Header({ projectName, searchQuery, onSearch }) {
   return (
     <header className="h-14 flex items-center justify-between px-6 border-b border-gray-800 bg-gray-900">
@@ -20,10 +21,7 @@ export default function Header({ projectName, searchQuery, onSearch }) {
             🔍
           </span>
         </div>
-        <button className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
-          <span className="text-lg">+</span>
-          Quick add
-        </button>
+        <AddButton icon="+" label="Quick add" />
         <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-sm font-medium text-gray-400 border border-gray-700">
           JD
         </div>
