@@ -94,9 +94,6 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
                   : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
                   }`}
               >
-                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-xs">
-                  {project.icon}
-                </span>
                 <span className="text-sm font-medium truncate">{project.label}</span>
                 {selectedProjectId === project.id && (
                   <span className="ml-auto w-1.5 h-1.5 bg-blue-500 rounded-full"></span>

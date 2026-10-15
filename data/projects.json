@@ -3,7 +3,6 @@
         {
             "id": "projectflow-platform",
             "label": "ProjectFlow Platform",
-            "icon": "bolt",
             "active": true,
             "tasks": [
                 {
@@ -103,7 +102,6 @@
         {
             "id": "pulse-mobile",
             "label": "Pulse Mobile Companion",
-            "icon": "mobile",
             "active": false,
             "tasks": [
                 {
@@ -164,7 +162,6 @@
         {
             "id": "obsidian-tokens",
             "label": "Obsidian UI Design Tokens",
-            "icon": "palette",
             "active": false,
             "tasks": [
                 {
@@ -225,7 +222,6 @@
         {
             "id": "semantic-search",
             "label": "Semantic Note Vector Search",
-            "icon": "brain",
             "active": false,
             "tasks": [
                 {
