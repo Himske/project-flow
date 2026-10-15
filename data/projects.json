@@ -24,6 +24,7 @@
                         "UI/UX"
                     ],
                     "date": "Oct 14",
+                    "priority": "HIGH",
                     "completed": false
                 }
             ],
@@ -104,27 +105,183 @@
             "label": "Pulse Mobile Companion",
             "icon": "mobile",
             "active": false,
-            "tasks": [],
-            "notes": [],
-            "links": []
+            "tasks": [
+                {
+                    "id": 1,
+                    "title": "Create onboarding flow wireframes",
+                    "tags": [
+                        "Design",
+                        "Onboarding"
+                    ],
+                    "date": "Oct 20",
+                    "priority": "MEDIUM",
+                    "completed": true
+                },
+                {
+                    "id": 2,
+                    "title": "Test push notification preferences",
+                    "tags": [
+                        "Mobile",
+                        "Notifications"
+                    ],
+                    "date": "Oct 22",
+                    "completed": true
+                }
+            ],
+            "notes": [
+                {
+                    "id": 1,
+                    "title": "Mobile Onboarding Ideas",
+                    "snippet": "Keep setup brief, explain notification choices clearly, and let users skip optional steps.",
+                    "pinned": true
+                }
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "title": "React Native Documentation",
+                    "url": "https://reactnative.dev/docs/getting-started",
+                    "description": "Guides and reference material for building native mobile apps with React.",
+                    "category": "Docs",
+                    "tags": [
+                        "React Native",
+                        "Mobile"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Material Design 3",
+                    "url": "https://m3.material.io/",
+                    "description": "Design guidance and components for creating cohesive mobile experiences.",
+                    "category": "Design",
+                    "tags": [
+                        "UI",
+                        "Design"
+                    ]
+                }
+            ]
         },
         {
             "id": "obsidian-tokens",
             "label": "Obsidian UI Design Tokens",
             "icon": "palette",
             "active": false,
-            "tasks": [],
-            "notes": [],
-            "links": []
+            "tasks": [
+                {
+                    "id": 1,
+                    "title": "Define semantic surface and text colors",
+                    "tags": [
+                        "Tokens",
+                        "Color"
+                    ],
+                    "date": "Oct 18",
+                    "priority": "HIGH",
+                    "completed": false
+                },
+                {
+                    "id": 2,
+                    "title": "Document spacing scale usage",
+                    "tags": [
+                        "Tokens",
+                        "Documentation"
+                    ],
+                    "date": "Oct 21",
+                    "completed": false
+                }
+            ],
+            "notes": [
+                {
+                    "id": 1,
+                    "title": "Token Naming Conventions",
+                    "snippet": "Use semantic names such as surface-primary and text-muted rather than component-specific color names.",
+                    "pinned": true
+                }
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "title": "Design Tokens Community Group",
+                    "url": "https://www.designtokens.org/",
+                    "description": "Community resources and specifications for interoperable design tokens.",
+                    "category": "Standards",
+                    "tags": [
+                        "Design Tokens",
+                        "Standards"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Style Dictionary",
+                    "url": "https://styledictionary.com/",
+                    "description": "A tool for transforming design tokens into platform-specific formats.",
+                    "category": "Tools",
+                    "tags": [
+                        "Tokens",
+                        "Build"
+                    ]
+                }
+            ]
         },
         {
             "id": "semantic-search",
             "label": "Semantic Note Vector Search",
             "icon": "brain",
             "active": false,
-            "tasks": [],
-            "notes": [],
-            "links": []
+            "tasks": [
+                {
+                    "id": 1,
+                    "title": "Choose an embedding model for note indexing",
+                    "tags": [
+                        "Search",
+                        "Embeddings"
+                    ],
+                    "date": "Oct 19",
+                    "priority": "HIGH",
+                    "completed": false
+                },
+                {
+                    "id": 2,
+                    "title": "Build a relevance test set",
+                    "tags": [
+                        "Testing",
+                        "Search"
+                    ],
+                    "date": "Oct 23",
+                    "completed": false
+                }
+            ],
+            "notes": [
+                {
+                    "id": 1,
+                    "title": "Semantic Search Evaluation",
+                    "snippet": "Compare results using representative queries, expected matches, and feedback on relevance.",
+                    "pinned": false
+                }
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "title": "Sentence Transformers Documentation",
+                    "url": "https://www.sbert.net/",
+                    "description": "Documentation for creating sentence embeddings and semantic search systems.",
+                    "category": "Docs",
+                    "tags": [
+                        "Embeddings",
+                        "Python"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Chroma Documentation",
+                    "url": "https://docs.trychroma.com/",
+                    "description": "Guides for storing and querying embeddings in a vector database.",
+                    "category": "Tools",
+                    "tags": [
+                        "Vector Database",
+                        "Search"
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -1,9 +1,5 @@
 export default function Todo({ task }) {
-    const getStatusColor = (status) => {
-        const colors = { 'todo': 'bg-gray-700', 'in-progress': 'bg-blue-600', 'done': 'bg-green-600' };
-        return colors[status] || 'bg-gray-700';
-    };
-
+    const priority = task.priority || 'MEDIUM';
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
         return colors[priority] || 'bg-gray-600';
@@ -24,8 +20,8 @@ export default function Todo({ task }) {
                 </div>
             </div>
             <div className="flex items-center justify-between">
-                <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(task.priority)}`}>
-                    {task.priority}
+                <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(priority)}`}>
+                    {priority}
                 </span>
                 <div className="flex items-center gap-2">
                     {task.tags.map(tag => (

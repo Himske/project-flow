@@ -1,6 +1,6 @@
 import AddButton from '../components/AddButton';
 import ProgressBar from '../components/ProgressBar';
-import TodoOverview from '../components/TodoOverview'
+import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
 
@@ -9,6 +9,7 @@ export default function Overview({ project }) {
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
   const todoTasks = tasks.filter(task => !task.completed && task.status !== 'done' && task.status !== 'in-progress').length;
+  const activeTasks = tasks.filter(task => !task.completed && task.status !== 'done');
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
 
   return (
@@ -42,9 +43,9 @@ export default function Overview({ project }) {
           </div>
           <h3 className="text-lg font-semibold text-white mb-3">Your next moves</h3>
           <div className="space-y-3">
-            {tasks.length ? tasks.map(task => (
-              <TodoOverview key={task.id} task={task} />
-            )) : <p className="text-sm text-gray-500">No tasks for this project yet.</p>}
+            {activeTasks.length ? activeTasks.map(task => (
+              <Todo key={task.id} task={task} />
+            )) : <p className="text-sm text-gray-500">No active tasks for this project.</p>}
           </div>
         </div>
 
