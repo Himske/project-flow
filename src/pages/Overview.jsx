@@ -11,6 +11,11 @@ export default function Overview({ project }) {
   const todoTasks = tasks.filter(task => !task.completed && task.status !== 'done' && task.status !== 'in-progress').length;
   const activeTasks = tasks.filter(task => !task.completed && task.status !== 'done');
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
+  const status = progress == 100 ? 'COMPLETED' : progress == 0 ? 'NOT STARTED' : 'IN PROGRESS';
+  const getStatusColor = (status) => {
+    const colors = { 'NOT STARTED': 'bg-gray-600', 'IN PROGRESS': 'bg-blue-600', 'COMPLETED': 'bg-green-600' };
+    return colors[status] || 'bg-gray-600';
+  };
 
   return (
     <div className="p-6 space-y-6">
@@ -23,8 +28,8 @@ export default function Overview({ project }) {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 bg-blue-600 text-white text-xs font-medium rounded">
-            IN PROGRESS
+          <span className={`px-2 py-0.5 ${getStatusColor(status)} text-white text-xs font-medium rounded`}>
+            {status}
           </span>
           <span className="text-xs text-gray-500">Updated Oct 12</span>
         </div>
