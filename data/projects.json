@@ -14,7 +14,7 @@
                         "Markdown"
                     ],
                     "date": "Oct 16",
-                    "completed": false
+                    "completed": true
                 },
                 {
                     "id": 2,
@@ -45,7 +45,7 @@
                 {
                     "id": 1,
                     "title": "Tailwind CSS Modern Color Palette",
-                    "url": "tailwindcss.com",
+                    "url": "https://tailwindcss.com/",
                     "description": "Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.",
                     "category": "Design",
                     "tags": [
@@ -56,7 +56,7 @@
                 {
                     "id": 2,
                     "title": "Lucide Icons Directory",
-                    "url": "lucide.dev",
+                    "url": "https://lucide.dev/",
                     "description": "Clean, consistent open-source iconography for dashboard and productivity tool actions.",
                     "category": "Tools",
                     "tags": [
@@ -66,8 +66,8 @@
                 },
                 {
                     "id": 3,
-                    "title": "SQLAlchemy 2.0 Unified Documentation",
-                    "url": "docs.sqlalchemy.org",
+                    "title": "SQLAlchemy 2.1 Documentation",
+                    "url": "https://docs.sqlalchemy.org/en/21/",
                     "description": "Modern ORM mapping, relationship mechanics, and SQLite connection pool configuration.",
                     "category": "Docs",
                     "tags": [
@@ -78,8 +78,19 @@
                 {
                     "id": 4,
                     "title": "FastAPI Official Documentation & Tutorial",
-                    "url": "fastapi.tiangolo.com",
+                    "url": "https://fastapi.tiangolo.com/",
                     "description": "Interactive API reference, dependency injection guides, and SQL databases tutorial with SQLAlchemy.",
+                    "category": "Docs",
+                    "tags": [
+                        "FastAPI",
+                        "Python"
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "FastAPI Cloud",
+                    "url": "https://fastapicloud.com/",
+                    "description": "Deploy your FastAPI app to production in seconds with zero config, global infrastructure, and automatic scaling.",
                     "category": "Docs",
                     "tags": [
                         "FastAPI",

@@ -2,11 +2,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject }) {
   const navigate = useNavigate();
+  const selectedProject = projects.find(project => project.id === selectedProjectId);
   const workspaceItems = [
     { id: 'overview', label: 'Overview', icon: 'grid', path: '/' },
-    { id: 'todos', label: 'Todos', icon: 'list', badge: 4, path: '/todos' },
-    { id: 'notes', label: 'Notes', icon: 'file-text', path: '/notes' },
-    { id: 'links', label: 'Links', icon: 'bookmark', path: '/links' },
+    { id: 'todos', label: 'Todos', icon: 'list', badge: selectedProject?.tasks.length ?? 0, path: '/todos' },
+    { id: 'notes', label: 'Notes', icon: 'file-text', badge: selectedProject?.notes.length ?? 0, path: '/notes' },
+    { id: 'links', label: 'Links', icon: 'bookmark', badge: selectedProject?.links.length ?? 0, path: '/links' },
   ];
 
   return (
@@ -46,7 +47,7 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
               >
                 <span className="text-lg">{item.icon}</span>
                 <span className="text-sm font-medium">{item.label}</span>
-                {item.badge && (
+                {item.badge !== undefined && (
                   <span className="ml-auto text-xs bg-gray-700 px-2 py-0.5 rounded-full">
                     {item.badge}
                   </span>
