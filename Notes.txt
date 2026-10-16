@@ -9,9 +9,9 @@ export default function App() {
 }
 
 Todo:
-Edit/remove tasks
+remove tasks
+remove links
 Add/edit/remove notes
-Add/edit/remove links
 Change ⚡ to a better icon. Maybe use the favicon.
 
 

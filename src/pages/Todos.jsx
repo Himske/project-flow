@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Todo from '../components/Todo';
 
-export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskStatus }) {
+export default function Todos({ project, searchQuery, onAddTask, onEditTask, onUpdateTaskStatus }) {
   const tasks = (project.tasks || []).map(task => ({
     ...task,
     description: task.description || '',
@@ -12,33 +12,22 @@ export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskSta
     completed: task.completed ?? task.status === 'done',
     status: task.status || (task.completed ? 'done' : 'todo'),
   }));
-  const [newTask, setNewTask] = useState('');
-  const handleAddTask = () => {
-    const title = newTask.trim();
-    if (!title) return;
-
-    onAddTask({
-      id: tasks.length + 1,
-      title,
-      tags: [],
-      priority: 'MEDIUM',
-      completed: false,
-      date: '',
-    });
-    setNewTask('');
-  };
   const handleDrop = (event, status) => {
     event.preventDefault();
     const taskId = Number(event.dataTransfer.getData('text/plain'));
     if (!Number.isNaN(taskId)) onUpdateTaskStatus(taskId, status);
   };
+  const [filter, setFilter] = useState('all');
   const taskTags = [...new Set(tasks.flatMap(task => task.tags))];
   const completedTasks = tasks.filter(task => task.completed).length;
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
 
-  const filteredTasks = tasks.filter(t =>
-    t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    t.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredTasks = tasks.filter(task =>
+    (filter === 'all' || task.tags.includes(filter)) &&
+    (
+      task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      task.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
   );
 
   return (
@@ -68,24 +57,38 @@ export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskSta
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <input
-          type="text"
-          placeholder="Add a task..."
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-        <AddButton icon="+" label="Add task" onClick={handleAddTask} />
+      <div className="flex justify-end">
+        <AddButton icon="+" label="Add task" onClick={onAddTask} />
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-400">All tasks {tasks.length}</span>
+        <button
+          onClick={() => setFilter('all')}
+          className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === 'all'
+            ? 'bg-blue-600 text-white'
+            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+            }`}
+        >
+          All tasks {tasks.length}
+        </button>
+        {taskTags.map(tag => (
+          <button
+            key={tag}
+            onClick={() => setFilter(tag)}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === tag
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+              }`}
+          >
+            {tag} {tasks.filter(task => task.tags.includes(tag)).length}
+          </button>
+        ))}
+        {/* <span className="text-sm text-gray-400">All tasks {tasks.length}</span>
         {taskTags.map(tag => (
           <span key={tag} className="px-2 py-0.5 bg-gray-800 text-gray-500 text-xs rounded">
             {tag}
           </span>
-        ))}
+        ))} */}
       </div>
 
       {tasks.length ? (
@@ -109,6 +112,7 @@ export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskSta
                   task={task}
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                  onEdit={onEditTask}
                 />
               ))}
             </div>
@@ -133,6 +137,7 @@ export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskSta
                   task={task}
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                  onEdit={onEditTask}
                 />
               ))}
             </div>
@@ -157,6 +162,7 @@ export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskSta
                   task={task}
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                  onEdit={onEditTask}
                 />
               ))}
             </div>

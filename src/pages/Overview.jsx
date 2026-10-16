@@ -4,7 +4,7 @@ import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
 
-export default function Overview({ project, onSelectTab }) {
+export default function Overview({ project, onSelectTab, onEditTask, onEditLink }) {
   const navigate = useNavigate();
   const { tasks = [], notes = [], links = [] } = project;
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
@@ -56,7 +56,7 @@ export default function Overview({ project, onSelectTab }) {
           <h3 className="text-lg font-semibold text-white mb-3">Your next moves</h3>
           <div className="space-y-3">
             {activeTasks.length ? activeTasks.map(task => (
-              <Todo key={task.id} task={task} />
+              <Todo key={task.id} task={task} onEdit={onEditTask} />
             )) : <p className="text-sm text-gray-500">No active tasks for this project.</p>}
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function Overview({ project, onSelectTab }) {
           <h3 className="text-lg font-semibold text-white mb-3">Saved references</h3>
           <div className="space-y-3">
             {links.length ? links.map(link => (
-              <LinkOverview key={link.id} link={link} />
+              <LinkOverview key={link.id} link={link} onEdit={onEditLink} />
             )) : <p className="text-sm text-gray-500">No links for this project yet.</p>}
           </div>
         </div>

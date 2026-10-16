@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import ContentArea from './components/ContentArea';
+import ItemModal from './components/ItemModal';
 import Overview from './pages/Overview';
 import Links from './pages/Links';
 import Notes from './pages/Notes';
@@ -33,7 +34,32 @@ export default function App() {
     return savedProject?.id || projects[0].id;
   });
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeModal, setActiveModal] = useState(null);
   const selectedProject = projects.find(project => project.id === selectedProjectId) || projects[0];
+
+  const saveModalItem = itemData => {
+    if (!activeModal) return;
+    const collection = activeModal.type === 'task' ? 'tasks' : `${activeModal.type}s`;
+
+    setProjects(currentProjects => currentProjects.map(project => {
+      if (project.id !== selectedProject.id) return project;
+      const items = project[collection] || [];
+
+      if (activeModal.item) {
+        return {
+          ...project,
+          [collection]: items.map(item => item.id === activeModal.item.id
+            ? { ...item, ...itemData }
+            : item
+          ),
+        };
+      }
+
+      const nextId = items.reduce((maxId, item) => Math.max(maxId, Number(item.id) || 0), 0) + 1;
+      return { ...project, [collection]: [...items, { ...itemData, id: nextId }] };
+    }));
+    setActiveModal(null);
+  };
 
   useEffect(() => {
     const data = {
@@ -73,6 +99,8 @@ export default function App() {
                     project={selectedProject}
                     searchQuery={searchQuery}
                     onSelectTab={setActiveTab}
+                    onEditTask={task => setActiveModal({ type: 'task', item: task })}
+                    onEditLink={link => setActiveModal({ type: 'link', item: link })}
                   />
                 }
               />
@@ -82,6 +110,8 @@ export default function App() {
                   <Links
                     project={selectedProject}
                     searchQuery={searchQuery}
+                    onAddLink={() => setActiveModal({ type: 'link' })}
+                    onEditLink={link => setActiveModal({ type: 'link', item: link })}
                   />
                 }
               />
@@ -91,6 +121,7 @@ export default function App() {
                   <Notes
                     project={selectedProject}
                     searchQuery={searchQuery}
+                    onAddNote={() => setActiveModal({ type: 'note' })}
                   />
                 }
               />
@@ -100,13 +131,8 @@ export default function App() {
                   <Todos
                     project={selectedProject}
                     searchQuery={searchQuery}
-                    onAddTask={task => {
-                      setProjects(currentProjects => currentProjects.map(project =>
-                        project.id === selectedProject.id
-                          ? { ...project, tasks: [...(project.tasks || []), task] }
-                          : project
-                      ));
-                    }}
+                    onAddTask={() => setActiveModal({ type: 'task' })}
+                    onEditTask={task => setActiveModal({ type: 'task', item: task })}
                     onUpdateTaskStatus={(taskId, status) => {
                       setProjects(currentProjects => currentProjects.map(project =>
                         project.id === selectedProject.id
@@ -129,6 +155,14 @@ export default function App() {
           </ContentArea>
         </div>
       </div>
+      {activeModal && (
+        <ItemModal
+          type={activeModal.type}
+          item={activeModal.item}
+          onClose={() => setActiveModal(null)}
+          onSave={saveModalItem}
+        />
+      )}
     </Router>
   );
 }

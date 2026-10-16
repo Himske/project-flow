@@ -1,4 +1,4 @@
-export default function LinkOverview({ link }) {
+export default function LinkOverview({ link, onEdit }) {
     return (
         <div key={link.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
             <div className="flex items-start justify-between">
@@ -11,7 +11,12 @@ export default function LinkOverview({ link }) {
                         <p className="text-xs text-gray-500 truncate">{link.url}</p>
                     </div>
                 </div>
-                <button className="text-gray-500 hover:text-gray-300">
+                <button
+                    type="button"
+                    onClick={() => onEdit?.(link)}
+                    aria-label={`Edit ${link.title}`}
+                    className="text-gray-500 hover:text-gray-300"
+                >
                     ↗
                 </button>
             </div>

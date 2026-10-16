@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Note from '../components/Note';
 
-export default function Notes({ project }) {
+export default function Notes({ project, onAddNote }) {
   const notes = project.notes || [];
   const [selectedNoteId, setSelectedNoteId] = useState(notes[0]?.id ?? null);
   const selectedNote = notes.find(note => note.id === selectedNoteId) || notes[0];
@@ -17,7 +17,7 @@ export default function Notes({ project }) {
             <h2 className="text-sm font-medium text-gray-400 uppercase">All Notes</h2>
             <span className="text-xs text-gray-600">{notes.length}</span>
           </div>
-          <AddButton icon="+" label="Add note" />
+          <AddButton icon="+" label="Add note" onClick={onAddNote} />
 
           {/* <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20">
             <span className="text-lg">+</span>

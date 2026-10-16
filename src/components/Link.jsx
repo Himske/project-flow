@@ -1,11 +1,16 @@
-export default function Link({ link }) {
+export default function Link({ link, onEdit }) {
     return (
         <div key={link.id} className="p-4 bg-gray-800 rounded-xl border border-gray-700 hover:border-gray-600 transition-colors">
             <div className="flex items-start justify-between mb-3">
                 <div className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-lg font-medium text-gray-400">
                     {link.title[0]}
                 </div>
-                <button className="text-gray-500 hover:text-gray-300">
+                <button
+                    type="button"
+                    onClick={() => onEdit?.(link)}
+                    aria-label={`Edit ${link.title}`}
+                    className="text-gray-500 hover:text-gray-300"
+                >
                     ↗
                 </button>
             </div>

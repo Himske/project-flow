@@ -1,4 +1,4 @@
-export default function Todo({ task, draggable, onDragStart }) {
+export default function Todo({ task, draggable, onDragStart, onEdit }) {
     const priority = task.priority || 'MEDIUM';
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
@@ -22,6 +22,16 @@ export default function Todo({ task, draggable, onDragStart }) {
                     <p className="text-sm text-gray-200 truncate">{task.title}</p>
                     <p className="text-xs text-gray-500 line-clamp-2">{task.description}</p>
                 </div>
+                {onEdit && (
+                    <button
+                        type="button"
+                        onClick={() => onEdit(task)}
+                        aria-label={`Edit ${task.title}`}
+                        className="text-gray-500 hover:text-gray-300"
+                    >
+                        ↗
+                    </button>
+                )}
             </div>
             <div className="flex items-center justify-between">
                 <span className={`px-2 py-0.5 text-xs font-medium rounded ${getPriorityColor(priority)}`}>
