@@ -1,4 +1,4 @@
-export default function Todo({ task }) {
+export default function Todo({ task, draggable, onDragStart }) {
     const priority = task.priority || 'MEDIUM';
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
@@ -6,7 +6,11 @@ export default function Todo({ task }) {
     };
 
     return (
-        <div key={task.id} className="p-3 rounded-lg bg-gray-700/50 opacity-75">
+        <div
+            className="p-3 rounded-lg bg-gray-700/50 opacity-75"
+            draggable={draggable}
+            onDragStart={onDragStart}
+        >
             <div className="flex items-start gap-3 mb-2">
                 <input
                     type="checkbox"

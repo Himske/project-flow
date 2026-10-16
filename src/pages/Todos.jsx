@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Todo from '../components/Todo';
 
-export default function Todos({ project, searchQuery, onAddTask }) {
+export default function Todos({ project, searchQuery, onAddTask, onUpdateTaskStatus }) {
   const tasks = (project.tasks || []).map(task => ({
     ...task,
     description: task.description || '',
@@ -26,6 +26,11 @@ export default function Todos({ project, searchQuery, onAddTask }) {
       date: '',
     });
     setNewTask('');
+  };
+  const handleDrop = (event, status) => {
+    event.preventDefault();
+    const taskId = Number(event.dataTransfer.getData('text/plain'));
+    if (!Number.isNaN(taskId)) onUpdateTaskStatus(taskId, status);
   };
   const taskTags = [...new Set(tasks.flatMap(task => task.tags))];
   const completedTasks = tasks.filter(task => task.completed).length;
@@ -86,7 +91,11 @@ export default function Todos({ project, searchQuery, onAddTask }) {
       {tasks.length ? (
         <div className="flex gap-4">
           {/* To Do Column */}
-          <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <div
+            className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700"
+            onDragOver={event => event.preventDefault()}
+            onDrop={event => handleDrop(event, 'todo')}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-medium text-gray-400">To do <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'todo').length}</span></span>
               <button className="text-gray-500 hover:text-gray-400">
@@ -95,13 +104,22 @@ export default function Todos({ project, searchQuery, onAddTask }) {
             </div>
             <div className="space-y-3">
               {filteredTasks.filter(task => task.status === 'todo').map(task => (
-                <Todo key={task.id} task={task} />
+                <Todo
+                  key={task.id}
+                  task={task}
+                  draggable={true}
+                  onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                />
               ))}
             </div>
           </div>
 
           {/* In Progress Column */}
-          <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <div
+            className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700"
+            onDragOver={event => event.preventDefault()}
+            onDrop={event => handleDrop(event, 'in-progress')}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-medium text-gray-400">In progress <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'in-progress').length}</span></span>
               <button className="text-gray-500 hover:text-gray-400">
@@ -110,13 +128,22 @@ export default function Todos({ project, searchQuery, onAddTask }) {
             </div>
             <div className="space-y-3">
               {filteredTasks.filter(task => task.status === 'in-progress').map(task => (
-                <Todo key={task.id} task={task} />
+                <Todo
+                  key={task.id}
+                  task={task}
+                  draggable={true}
+                  onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                />
               ))}
             </div>
           </div>
 
           {/* Done Column */}
-          <div className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <div
+            className="flex-1 min-w-62.5 bg-gray-800 rounded-xl p-4 border border-gray-700"
+            onDragOver={event => event.preventDefault()}
+            onDrop={event => handleDrop(event, 'done')}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-medium text-gray-400">Done <span className="ml-1 px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{tasks.filter(t => t.status === 'done').length}</span></span>
               <button className="text-gray-500 hover:text-gray-400">
@@ -125,7 +152,12 @@ export default function Todos({ project, searchQuery, onAddTask }) {
             </div>
             <div className="space-y-3">
               {filteredTasks.filter(task => task.status === 'done').map(task => (
-                <Todo key={task.id} task={task} />
+                <Todo
+                  key={task.id}
+                  task={task}
+                  draggable={true}
+                  onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
+                />
               ))}
             </div>
           </div>

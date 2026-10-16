@@ -107,6 +107,20 @@ export default function App() {
                           : project
                       ));
                     }}
+                    onUpdateTaskStatus={(taskId, status) => {
+                      setProjects(currentProjects => currentProjects.map(project =>
+                        project.id === selectedProject.id
+                          ? {
+                            ...project,
+                            tasks: (project.tasks || []).map(task =>
+                              task.id === taskId
+                                ? { ...task, status, completed: status === 'done' }
+                                : task
+                            ),
+                          }
+                          : project
+                      ));
+                    }}
                   />
                 }
               />
