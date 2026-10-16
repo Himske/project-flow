@@ -1,10 +1,18 @@
 Markdown rendering for notes (you'd want to add a proper markdown parser like react-markdown)
 Kanban-style todos with drag-and-drop ready (you could add react-beautiful-dnd or dnd-kit)
 
+import MDEditor from "@uiw/react-md-editor";
+
+export default function App() {
+  const [value, setValue] = React.useState("**Hello world!**");
+  return <MDEditor value={value} onChange={setValue} />;
+}
+
 Todo:
 Edit/remove tasks
 Add/edit/remove notes
 Add/edit/remove links
+Change ⚡ to a better icon. Maybe use the favicon.
 
 
 Unused components:
