@@ -14,12 +14,6 @@ import projectData from '../data/projects.json';
 const initialProjects = projectData.projects;
 
 export default function App() {
-  useEffect(() => {
-    document.title = "Project Flow";
-    const favicon = document.querySelector("link[rel~='icon']");
-    if (favicon) favicon.href = "/favicon.png";
-  }, []);
-
   const [savedData] = useState(() => {
     const storedData = localStorage.getItem('projectflow-data');
     return storedData ? JSON.parse(storedData) : {};
