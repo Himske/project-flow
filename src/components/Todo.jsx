@@ -1,4 +1,6 @@
-export default function Todo({ task, draggable, onDragStart, onEdit }) {
+import { CalendarIcon, PencilIcon, TrashIcon } from "./icons";
+
+export default function Todo({ task, draggable, onDragStart, onEdit, onDelete }) {
     const priority = task.priority || 'MEDIUM';
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
@@ -29,7 +31,17 @@ export default function Todo({ task, draggable, onDragStart, onEdit }) {
                         aria-label={`Edit ${task.title}`}
                         className="text-gray-500 hover:text-gray-300"
                     >
-                        ↗
+                        <PencilIcon className="size-5 shrink-0" />
+                    </button>
+                )}
+                {onDelete && (
+                    <button
+                        type="button"
+                        onClick={() => onDelete(task)}
+                        aria-label={`Delete ${task.title}`}
+                        className="text-gray-500 hover:text-red-400"
+                    >
+                        <TrashIcon className="size-5 shrink-0" />
                     </button>
                 )}
             </div>
@@ -43,7 +55,8 @@ export default function Todo({ task, draggable, onDragStart, onEdit }) {
                             {tag}
                         </span>
                     ))}
-                    <span className="text-xs text-gray-500 ml-auto">📅 {task.date}</span>
+                    <CalendarIcon className="text-gray-200 size-5 shrink-0" />
+                    <span className="text-xs text-gray-500 ml-auto">{task.date}</span>
                 </div>
             </div>
         </div>

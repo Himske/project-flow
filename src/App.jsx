@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import ContentArea from './components/ContentArea';
 import ItemModal from './components/ItemModal';
+import DeleteModal from './components/DeleteModal';
 import Overview from './pages/Overview';
 import Links from './pages/Links';
 import Notes from './pages/Notes';
@@ -35,6 +36,7 @@ export default function App() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModal, setActiveModal] = useState(null);
+  const [activeDelete, setActiveDelete] = useState(null);
   const selectedProject = projects.find(project => project.id === selectedProjectId) || projects[0];
 
   const saveModalItem = itemData => {
@@ -59,6 +61,20 @@ export default function App() {
       return { ...project, [collection]: [...items, { ...itemData, id: nextId }] };
     }));
     setActiveModal(null);
+  };
+
+  const confirmDelete = () => {
+    if (!activeDelete) return;
+    const collection = activeDelete.type === 'task' ? 'tasks' : `${activeDelete.type}s`;
+    setProjects(currentProjects => currentProjects.map(project =>
+      project.id === selectedProject.id
+        ? {
+          ...project,
+          [collection]: (project[collection] || []).filter(item => item.id !== activeDelete.item.id),
+        }
+        : project
+    ));
+    setActiveDelete(null);
   };
 
   useEffect(() => {
@@ -100,7 +116,9 @@ export default function App() {
                     searchQuery={searchQuery}
                     onSelectTab={setActiveTab}
                     onEditTask={task => setActiveModal({ type: 'task', item: task })}
+                    onDeleteTask={task => setActiveDelete({ type: 'task', item: task })}
                     onEditLink={link => setActiveModal({ type: 'link', item: link })}
+                    onDeleteLink={link => setActiveDelete({ type: 'link', item: link })}
                   />
                 }
               />
@@ -112,6 +130,7 @@ export default function App() {
                     searchQuery={searchQuery}
                     onAddLink={() => setActiveModal({ type: 'link' })}
                     onEditLink={link => setActiveModal({ type: 'link', item: link })}
+                    onDeleteLink={link => setActiveDelete({ type: 'link', item: link })}
                   />
                 }
               />
@@ -122,6 +141,7 @@ export default function App() {
                     project={selectedProject}
                     searchQuery={searchQuery}
                     onAddNote={() => setActiveModal({ type: 'note' })}
+                    onDeleteNote={note => setActiveDelete({ type: 'note', item: note })}
                   />
                 }
               />
@@ -133,6 +153,7 @@ export default function App() {
                     searchQuery={searchQuery}
                     onAddTask={() => setActiveModal({ type: 'task' })}
                     onEditTask={task => setActiveModal({ type: 'task', item: task })}
+                    onDeleteTask={task => setActiveDelete({ type: 'task', item: task })}
                     onUpdateTaskStatus={(taskId, status) => {
                       setProjects(currentProjects => currentProjects.map(project =>
                         project.id === selectedProject.id
@@ -161,6 +182,14 @@ export default function App() {
           item={activeModal.item}
           onClose={() => setActiveModal(null)}
           onSave={saveModalItem}
+        />
+      )}
+      {activeDelete && (
+        <DeleteModal
+          type={activeDelete.type}
+          item={activeDelete.item}
+          onClose={() => setActiveDelete(null)}
+          onConfirm={confirmDelete}
         />
       )}
     </Router>

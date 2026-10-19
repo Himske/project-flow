@@ -1,18 +1,32 @@
-export default function Link({ link, onEdit }) {
+import { PencilIcon, TrashIcon } from "./icons";
+
+export default function Link({ link, onEdit, onDelete }) {
     return (
         <div key={link.id} className="p-4 bg-gray-800 rounded-xl border border-gray-700 hover:border-gray-600 transition-colors">
             <div className="flex items-start justify-between mb-3">
                 <div className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-lg font-medium text-gray-400">
                     {link.title[0]}
                 </div>
-                <button
-                    type="button"
-                    onClick={() => onEdit?.(link)}
-                    aria-label={`Edit ${link.title}`}
-                    className="text-gray-500 hover:text-gray-300"
-                >
-                    ↗
-                </button>
+                <div className="flex items-center gap-3">
+                    <button
+                        type="button"
+                        onClick={() => onEdit?.(link)}
+                        aria-label={`Edit ${link.title}`}
+                        className="text-gray-500 hover:text-gray-300"
+                    >
+                        <PencilIcon className="size-5 shrink-0" />
+                    </button>
+                    {onDelete && (
+                        <button
+                            type="button"
+                            onClick={() => onDelete(link)}
+                            aria-label={`Delete ${link.title}`}
+                            className="text-gray-500 hover:text-red-400"
+                        >
+                            <TrashIcon className="size-5 shrink-0" />
+                        </button>
+                    )}
+                </div>
             </div>
             <h3 className="text-lg font-semibold text-white mb-1">{link.title}</h3>
             <a

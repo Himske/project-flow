@@ -24,7 +24,135 @@
                     ],
                     "date": "Oct 14",
                     "priority": "HIGH",
-                    "completed": false
+                    "completed": true,
+                    "status": "done"
+                },
+                {
+                    "id": 4,
+                    "title": "Implement Markdown edit of notes",
+                    "tags": [
+                        "Notes"
+                    ],
+                    "priority": "MEDIUM",
+                    "completed": false,
+                    "date": "Oct 29",
+                    "description": "",
+                    "status": "todo"
+                },
+                {
+                    "title": "Delete functionality for tasks",
+                    "description": "",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX",
+                        "Todo"
+                    ],
+                    "priority": "HIGH",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450066
+                },
+                {
+                    "title": "Delete functionality for links",
+                    "description": "",
+                    "tags": [
+                        "Links"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450067
+                },
+                {
+                    "title": "Datepicker for tasks",
+                    "description": "",
+                    "tags": [
+                        "Todo"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450068
+                },
+                {
+                    "title": "Add, edit, preview and remove notes",
+                    "description": "Markdown editor",
+                    "tags": [
+                        "Notes"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450069
+                },
+                {
+                    "title": "Better logo for project",
+                    "description": "",
+                    "tags": [
+                        "Frontend"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450070
+                },
+                {
+                    "title": "Use JSON file for projects",
+                    "description": "Add export/import functionality in the settings button",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450071
+                },
+                {
+                    "title": "Remove quick add button",
+                    "description": "",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450072
+                },
+                {
+                    "title": "Remove completed from tasks",
+                    "description": "Tasks already have a status. Completed is just when status is done, so it's doesn't need another flag.",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX",
+                        "Todo"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450073
+                },
+                {
+                    "title": "Add project",
+                    "description": "Titel. What else?",
+                    "tags": [
+                        "Frontend",
+                        "UI/UX"
+                    ],
+                    "priority": "MEDIUM",
+                    "status": "todo",
+                    "completed": false,
+                    "date": "",
+                    "id": 1792071450074
                 }
             ],
             "notes": [
@@ -45,7 +173,7 @@
                 {
                     "id": 1,
                     "title": "Tailwind CSS Modern Color Palette",
-                    "url": "https://tailwindcss.com/",
+                    "url": "https: //tailwindcss.com/",
                     "description": "Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.",
                     "category": "Design",
                     "tags": [
@@ -123,7 +251,8 @@
                         "Notifications"
                     ],
                     "date": "Oct 22",
-                    "completed": true
+                    "completed": false,
+                    "status": "in-progress"
                 }
             ],
             "notes": [

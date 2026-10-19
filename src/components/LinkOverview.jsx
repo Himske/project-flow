@@ -1,4 +1,6 @@
-export default function LinkOverview({ link, onEdit }) {
+import { PencilIcon, TrashIcon } from "./icons";
+
+export default function LinkOverview({ link, onEdit, onDelete }) {
     return (
         <div key={link.id} className="p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors">
             <div className="flex items-start justify-between">
@@ -11,14 +13,26 @@ export default function LinkOverview({ link, onEdit }) {
                         <p className="text-xs text-gray-500 truncate">{link.url}</p>
                     </div>
                 </div>
-                <button
-                    type="button"
-                    onClick={() => onEdit?.(link)}
-                    aria-label={`Edit ${link.title}`}
-                    className="text-gray-500 hover:text-gray-300"
-                >
-                    ↗
-                </button>
+                <div className="flex items-center gap-3">
+                    <button
+                        type="button"
+                        onClick={() => onEdit?.(link)}
+                        aria-label={`Edit ${link.title}`}
+                        className="text-gray-500 hover:text-gray-300"
+                    >
+                        <PencilIcon className="size-5 shrink-0" />
+                    </button>
+                    {onDelete && (
+                        <button
+                            type="button"
+                            onClick={() => onDelete(link)}
+                            aria-label={`Delete ${link.title}`}
+                            className="text-gray-500 hover:text-red-400"
+                        >
+                            <TrashIcon className="size-5 shrink-0" />
+                        </button>
+                    )}
+                </div>
             </div>
             <div className="flex items-center justify-between mt-2">
                 <span className="px-2 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">{link.category}</span>

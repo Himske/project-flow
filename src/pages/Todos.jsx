@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Todo from '../components/Todo';
 
-export default function Todos({ project, searchQuery, onAddTask, onEditTask, onUpdateTaskStatus }) {
+export default function Todos({ project, searchQuery, onAddTask, onEditTask, onDeleteTask, onUpdateTaskStatus }) {
   const tasks = (project.tasks || []).map(task => ({
     ...task,
     description: task.description || '',
@@ -83,12 +83,6 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onU
             {tag} {tasks.filter(task => task.tags.includes(tag)).length}
           </button>
         ))}
-        {/* <span className="text-sm text-gray-400">All tasks {tasks.length}</span>
-        {taskTags.map(tag => (
-          <span key={tag} className="px-2 py-0.5 bg-gray-800 text-gray-500 text-xs rounded">
-            {tag}
-          </span>
-        ))} */}
       </div>
 
       {tasks.length ? (
@@ -113,6 +107,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onU
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
+                  onDelete={onDeleteTask}
                 />
               ))}
             </div>
@@ -138,6 +133,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onU
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
+                  onDelete={onDeleteTask}
                 />
               ))}
             </div>
@@ -163,6 +159,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onU
                   draggable={true}
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
+                  onDelete={onDeleteTask}
                 />
               ))}
             </div>

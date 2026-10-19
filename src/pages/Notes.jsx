@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Note from '../components/Note';
 
-export default function Notes({ project, onAddNote }) {
+export default function Notes({ project, onAddNote, onDeleteNote }) {
   const notes = project.notes || [];
   const [selectedNoteId, setSelectedNoteId] = useState(notes[0]?.id ?? null);
   const selectedNote = notes.find(note => note.id === selectedNoteId) || notes[0];
@@ -18,11 +18,6 @@ export default function Notes({ project, onAddNote }) {
             <span className="text-xs text-gray-600">{notes.length}</span>
           </div>
           <AddButton icon="+" label="Add note" onClick={onAddNote} />
-
-          {/* <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20">
-            <span className="text-lg">+</span>
-            Add note
-          </button> */}
         </div>
         <div className="divide-y divide-gray-800">
           {notes.map(note => (
@@ -53,7 +48,14 @@ export default function Notes({ project, onAddNote }) {
                   👁️ Preview
                 </button>
                 <button className="text-yellow-500 hover:text-yellow-400 text-sm">📌</button>
-                <button className="text-gray-500 hover:text-gray-400 text-sm">🗑</button>
+                <button
+                  type="button"
+                  onClick={() => onDeleteNote?.(selectedNote)}
+                  aria-label={`Delete ${selectedNote.title}`}
+                  className="text-gray-500 hover:text-red-400 text-sm"
+                >
+                  🗑
+                </button>
               </div>
             </div>
             <h1 className="text-3xl font-bold text-white mb-6">{selectedNote.title}</h1>

@@ -4,13 +4,13 @@ import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
 
-export default function Overview({ project, onSelectTab, onEditTask, onEditLink }) {
+export default function Overview({ project, onSelectTab, onEditTask, onDeleteTask, onEditLink, onDeleteLink }) {
   const navigate = useNavigate();
   const { tasks = [], notes = [], links = [] } = project;
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
   const todoTasks = tasks.filter(task => !task.completed && task.status !== 'done' && task.status !== 'in-progress').length;
-  const activeTasks = tasks.filter(task => !task.completed && task.status !== 'done');
+  const activeTasks = tasks.filter(task => (task.priority === "HIGH" || task.priority === "URGENT") && !task.completed && task.status !== 'done');
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
   const status = progress == 100 ? 'COMPLETED' : progress == 0 ? 'NOT STARTED' : 'IN PROGRESS';
   const getStatusColor = (status) => {
@@ -56,7 +56,7 @@ export default function Overview({ project, onSelectTab, onEditTask, onEditLink 
           <h3 className="text-lg font-semibold text-white mb-3">Your next moves</h3>
           <div className="space-y-3">
             {activeTasks.length ? activeTasks.map(task => (
-              <Todo key={task.id} task={task} onEdit={onEditTask} />
+              <Todo key={task.id} task={task} onEdit={onEditTask} onDelete={onDeleteTask} />
             )) : <p className="text-sm text-gray-500">No active tasks for this project.</p>}
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function Overview({ project, onSelectTab, onEditTask, onEditLink 
           <h3 className="text-lg font-semibold text-white mb-3">Saved references</h3>
           <div className="space-y-3">
             {links.length ? links.map(link => (
-              <LinkOverview key={link.id} link={link} onEdit={onEditLink} />
+              <LinkOverview key={link.id} link={link} onEdit={onEditLink} onDelete={onDeleteLink} />
             )) : <p className="text-sm text-gray-500">No links for this project yet.</p>}
           </div>
         </div>

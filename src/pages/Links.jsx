@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddButton from '../components/AddButton';
 import Link from '../components/Link';
 
-export default function Links({ project, onAddLink, onEditLink }) {
+export default function Links({ project, onAddLink, onEditLink, onDeleteLink }) {
   const [filter, setFilter] = useState('all');
   const links = project.links || [];
   const categories = [...new Set(links.map(link => link.category).filter(Boolean))];
@@ -55,7 +55,7 @@ export default function Links({ project, onAddLink, onEditLink }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredLinks.map(link => (
-          <Link key={link.id} link={link} onEdit={onEditLink} />
+          <Link key={link.id} link={link} onEdit={onEditLink} onDelete={onDeleteLink} />
         ))}
       </div>
       {!filteredLinks.length && <p className="text-sm text-gray-500">No links for this project yet.</p>}
