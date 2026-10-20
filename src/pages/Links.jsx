@@ -25,7 +25,7 @@ export default function Links({ project, onAddLink, onEditLink, onDeleteLink }) 
         </p>
       </div>
 
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-start">
         <AddButton icon="+" label="Add link" onClick={onAddLink} />
       </div>
 

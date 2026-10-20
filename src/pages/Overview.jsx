@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import AddButton from '../components/AddButton';
 import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
@@ -34,7 +33,6 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
           </span>
           <span className="text-xs text-gray-500">Updated Oct 12</span>
         </div>
-        <AddButton icon="+" label="New Project" />
       </div>
 
       {/* Momentum */}

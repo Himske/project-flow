@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import AddButton from './AddButton';
 import { BookmarkIcon, CogIcon, FileTextIcon, GridIcon, TodosListIcon } from "./icons";
 
 export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject }) {
@@ -23,9 +24,9 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
             <p className="text-xs text-gray-500">PROJECT WORKSPACE</p>
           </div>
         </div>
-        <button className="mt-3 p-1 text-gray-500 hover:text-gray-300">
-          <span className="text-2xl">+</span>
-        </button>
+        <div className="mt-3">
+          <AddButton icon="+" label="New Project" />
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto">

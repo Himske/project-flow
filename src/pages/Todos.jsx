@@ -57,7 +57,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onD
         </div>
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-start">
         <AddButton icon="+" label="Add task" onClick={onAddTask} />
       </div>
 
