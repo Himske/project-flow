@@ -20,9 +20,6 @@ export default function Header({ projectName, searchQuery, onSearch }) {
             🔍
           </span>
         </div>
-        <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-sm font-medium text-gray-400 border border-gray-700">
-          JD
-        </div>
       </div>
     </header>
   );
