@@ -136,6 +136,32 @@ export default function App() {
                     searchQuery={searchQuery}
                     onAddNote={() => setActiveModal({ type: 'note' })}
                     onDeleteNote={note => setActiveDelete({ type: 'note', item: note })}
+                    onUpdateNote={(noteId, content) => {
+                      setProjects(currentProjects => currentProjects.map(project =>
+                        project.id === selectedProject.id
+                          ? {
+                            ...project,
+                            notes: (project.notes || []).map(note => note.id === noteId
+                              ? { ...note, content, snippet: content, lastEdited: 'just now' }
+                              : note
+                            ),
+                          }
+                          : project
+                      ));
+                    }}
+                    onTogglePin={noteId => {
+                      setProjects(currentProjects => currentProjects.map(project =>
+                        project.id === selectedProject.id
+                          ? {
+                            ...project,
+                            notes: (project.notes || []).map(note => note.id === noteId
+                              ? { ...note, pinned: !note.pinned }
+                              : note
+                            ),
+                          }
+                          : project
+                      ));
+                    }}
                   />
                 }
               />

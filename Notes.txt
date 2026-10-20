@@ -8,8 +8,6 @@ export default function App() {
 }
 
 Todo:
-Add/edit/remove notes
 Change ⚡ to a better icon.
-Move "+ Add..." buttons to better position
 Replace "+" on AddButton to an icon component
 Delete project?

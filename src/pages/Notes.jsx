@@ -1,10 +1,15 @@
 import { useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
+import '@uiw/react-md-editor/markdown-editor.css';
+import '@uiw/react-markdown-preview/markdown.css';
+import { PinIcon, TrashIcon } from '../components/icons';
 import AddButton from '../components/AddButton';
 import Note from '../components/Note';
 
-export default function Notes({ project, onAddNote, onDeleteNote }) {
+export default function Notes({ project, onAddNote, onDeleteNote, onUpdateNote, onTogglePin }) {
   const notes = project.notes || [];
   const [selectedNoteId, setSelectedNoteId] = useState(notes[0]?.id ?? null);
+  const [viewMode, setViewMode] = useState('preview');
   const selectedNote = notes.find(note => note.id === selectedNoteId) || notes[0];
   const noteContent = selectedNote?.content || selectedNote?.snippet || '';
 
@@ -25,7 +30,10 @@ export default function Notes({ project, onAddNote, onDeleteNote }) {
               key={note.id}
               note={note}
               isSelected={selectedNoteId === note.id}
-              onSelect={() => setSelectedNoteId(note.id)}
+              onSelect={() => {
+                setSelectedNoteId(note.id);
+                setViewMode('preview');
+              }}
             />
           ))}
         </div>
@@ -41,44 +49,57 @@ export default function Notes({ project, onAddNote, onDeleteNote }) {
                 <span className="text-xs text-gray-600">Edited {selectedNote.lastEdited || 'recently'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <button className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-sm transition-colors">
-                  ✏️ Edit
+                <button
+                  type="button"
+                  aria-pressed={viewMode === 'edit'}
+                  onClick={() => setViewMode('edit')}
+                  className={`px-3 py-1.5 rounded-l-md text-sm transition-colors ${viewMode === 'edit' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+                >
+                  Edit
                 </button>
-                <button className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-sm transition-colors">
-                  👁️ Preview
+                <button
+                  type="button"
+                  aria-pressed={viewMode === 'preview'}
+                  onClick={() => setViewMode('preview')}
+                  className={`-ml-2 px-3 py-1.5 rounded-r-md text-sm transition-colors ${viewMode === 'preview' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+                >
+                  Preview
                 </button>
-                <button className="text-yellow-500 hover:text-yellow-400 text-sm">📌</button>
+                <button
+                  type="button"
+                  aria-label={selectedNote.pinned ? `Unpin ${selectedNote.title}` : `Pin ${selectedNote.title}`}
+                  aria-pressed={Boolean(selectedNote.pinned)}
+                  onClick={() => onTogglePin?.(selectedNote.id)}
+                  className={`transition-colors ${selectedNote.pinned ? 'text-yellow-400 hover:text-yellow-300' : 'text-gray-500 hover:text-gray-300'}`}
+                >
+                  <PinIcon className="size-5 shrink-0" />
+                </button>
                 <button
                   type="button"
                   onClick={() => onDeleteNote?.(selectedNote)}
                   aria-label={`Delete ${selectedNote.title}`}
-                  className="text-gray-500 hover:text-red-400 text-sm"
+                  className="text-gray-500 transition-colors hover:text-red-400"
                 >
-                  🗑
+                  <TrashIcon className="size-5 shrink-0" />
                 </button>
               </div>
             </div>
             <h1 className="text-3xl font-bold text-white mb-6">{selectedNote.title}</h1>
-            <div className="prose prose-invert max-w-none">
-              {noteContent.split('\n').map((line, i) => {
-                if (line.startsWith('### ')) {
-                  return <h2 key={i} className="text-xl font-semibold text-white mt-6 mb-3">{line.replace('### ', '')}</h2>;
-                }
-                if (line.startsWith('#### ')) {
-                  return <h3 key={i} className="text-lg font-semibold text-white mt-5 mb-2">{line.replace('#### ', '')}</h3>;
-                }
-                if (line.startsWith('- **')) {
-                  return <li key={i} className="ml-6 mb-2 text-gray-300">{line}</li>;
-                }
-                if (line.trim() === '') {
-                  return <br key={i} />;
-                }
-                if (line.startsWith('`')) {
-                  return <p key={i} className="text-gray-400">{line}</p>;
-                }
-                return <p key={i} className="text-gray-300 mb-2">{line}</p>;
-              })}
-            </div>
+            {viewMode === 'edit' ? (
+              <div data-color-mode="dark">
+                <MDEditor
+                  aria-label={`Edit ${selectedNote.title}`}
+                  value={noteContent}
+                  onChange={value => onUpdateNote?.(selectedNote.id, value || '')}
+                  preview="edit"
+                  height={320}
+                />
+              </div>
+            ) : (
+              <div data-color-mode="dark">
+                <MDEditor.Markdown source={noteContent} />
+              </div>
+            )}
             <div className="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between">
               <div className="text-xs text-gray-500">
                 {noteContent.split(/\s+/).filter(w => w.length > 0).length} words

@@ -152,7 +152,7 @@ export default function ItemModal({ type, item, onClose, onSave }) {
                         </>
                     )}
 
-                    {(type === 'link' || type === 'task' || type === 'note') && (
+                    {(type === 'link' || type === 'task' || (type === 'note' && isEditing)) && (
                         <label className="block">
                             <span className={labelClass}>{type === 'note' ? 'Content' : 'Description'}</span>
                             <textarea
