@@ -32,6 +32,18 @@ export default function App() {
   const [configurationOpen, setConfigurationOpen] = useState(false);
   const selectedProject = projects.find(project => project.id === selectedProjectId) || projects[0];
 
+  const createProject = projectDetails => {
+    const projectId = `project-${globalThis.crypto?.randomUUID?.() || Date.now()}`;
+    setProjects(currentProjects => [...currentProjects, {
+      id: projectId,
+      ...projectDetails,
+      tasks: [],
+      notes: [],
+      links: [],
+    }]);
+    return projectId;
+  };
+
   const saveModalItem = itemData => {
     if (!activeModal) return;
     const collection = activeModal.type === 'task' ? 'tasks' : `${activeModal.type}s`;
@@ -58,6 +70,15 @@ export default function App() {
 
   const confirmDelete = () => {
     if (!activeDelete) return;
+    if (activeDelete.type === 'project') {
+      const remainingProjects = projects.filter(project => project.id !== activeDelete.item.id);
+      setProjects(remainingProjects);
+      setSelectedProjectId(remainingProjects[0]?.id ?? null);
+      setActiveTab('overview');
+      setActiveDelete(null);
+      return;
+    }
+
     const collection = activeDelete.type === 'task' ? 'tasks' : `${activeDelete.type}s`;
     setProjects(currentProjects => currentProjects.map(project =>
       project.id === selectedProject.id
@@ -93,6 +114,7 @@ export default function App() {
             setActiveTab('overview');
           }}
           onOpenConfiguration={() => setConfigurationOpen(true)}
+          onCreateProject={createProject}
         />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
@@ -113,6 +135,12 @@ export default function App() {
                     onDeleteTask={task => setActiveDelete({ type: 'task', item: task })}
                     onEditLink={link => setActiveModal({ type: 'link', item: link })}
                     onDeleteLink={link => setActiveDelete({ type: 'link', item: link })}
+                    onUpdateProject={(projectId, projectDetails) => {
+                      setProjects(currentProjects => currentProjects.map(project =>
+                        project.id === projectId ? { ...project, ...projectDetails } : project
+                      ));
+                    }}
+                    onDeleteProject={project => setActiveDelete({ type: 'project', item: project })}
                   />
                 }
               />

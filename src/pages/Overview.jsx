@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Todo from '../components/Todo'
 import NoteOverview from '../components/NoteOverview';
 import LinkOverview from '../components/LinkOverview'
+import ProjectModal from '../components/ProjectModal';
+import { PencilIcon, TrashIcon } from '../components/icons';
 
-export default function Overview({ project, onSelectTab, onEditTask, onDeleteTask, onEditLink, onDeleteLink }) {
+export default function Overview({ project, onSelectTab, onEditTask, onDeleteTask, onEditLink, onDeleteLink, onUpdateProject, onDeleteProject }) {
   const navigate = useNavigate();
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   const { tasks = [], notes = [], links = [] } = project;
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
   const todoTasks = tasks.filter(task => !task.completed && task.status !== 'done' && task.status !== 'in-progress').length;
-  const activeTasks = tasks.filter(task => (task.priority === "HIGH" || task.priority === "URGENT") && !task.completed && task.status !== 'done');
+  const activeTasks = tasks.filter(task => (task.priority === "HIGH" || task.priority === "URGENT" || task.status === 'in-progress') && !task.completed && task.status !== 'done');
   const progress = tasks.length ? Math.round((completedTasks / tasks.length) * 100) : 0;
   const status = progress == 100 ? 'COMPLETED' : progress == 0 ? 'NOT STARTED' : 'IN PROGRESS';
   const getStatusColor = (status) => {
@@ -20,10 +24,40 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">{project.label}</h1>
+        <div className="mb-2 flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-white">{project.label}</h1>
+          <button
+            type="button"
+            onClick={() => setProjectModalOpen(true)}
+            aria-label={`Edit ${project.label}`}
+            title="Edit project"
+            className="rounded p-1 text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-200"
+          >
+            <PencilIcon className="size-6" />
+          </button>
+          <button
+            type="button"
+            onClick={() => onDeleteProject(project)}
+            aria-label={`Delete ${project.label}`}
+            title="Delete project"
+            className="rounded p-1 text-gray-500 transition-colors hover:bg-gray-800 hover:text-red-400"
+          >
+            <TrashIcon className="size-6" />
+          </button>
+        </div>
         <p className="text-gray-400 text-sm">
-          Personal productivity workspace with high-performance React UI.
+          {project.description || 'No project description yet.'}
         </p>
+        {projectModalOpen && (
+          <ProjectModal
+            project={project}
+            onClose={() => setProjectModalOpen(false)}
+            onSave={projectDetails => {
+              onUpdateProject(project.id, projectDetails);
+              setProjectModalOpen(false);
+            }}
+          />
+        )}
       </div>
 
       <div className="flex items-center justify-between">

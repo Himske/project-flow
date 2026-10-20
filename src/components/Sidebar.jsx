@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddButton from './AddButton';
+import ProjectModal from './ProjectModal';
 import { BookmarkIcon, CogIcon, FileTextIcon, GridIcon, TodosListIcon } from "./icons";
 
-export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject, onOpenConfiguration }) {
+export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject, onOpenConfiguration, onCreateProject }) {
   const navigate = useNavigate();
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   const selectedProject = projects.find(project => project.id === selectedProjectId);
   const workspaceItems = [
     { id: 'overview', label: 'Overview', icon: <GridIcon className="size-5 shrink-0" />, path: '/' },
@@ -25,7 +28,7 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
           </div>
         </div>
         <div className="mt-3">
-          <AddButton icon="+" label="New Project" />
+          <AddButton icon="+" label="New Project" onClick={() => setProjectModalOpen(true)} />
         </div>
       </div>
 
@@ -103,6 +106,17 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
           </div>
         </button>
       </div>
+      {projectModalOpen && (
+        <ProjectModal
+          onClose={() => setProjectModalOpen(false)}
+          onSave={projectDetails => {
+            const projectId = onCreateProject(projectDetails);
+            onSelectProject(projectId);
+            navigate('/');
+            setProjectModalOpen(false);
+          }}
+        />
+      )}
     </aside>
   );
 }

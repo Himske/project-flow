@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 const typeLabels = {
+    project: 'project',
     link: 'link',
     task: 'task',
     note: 'note',
@@ -8,6 +9,7 @@ const typeLabels = {
 
 export default function DeleteModal({ type, item, onClose, onConfirm }) {
     const label = typeLabels[type] || 'item';
+    const itemName = item.label || item.title;
 
     useEffect(() => {
         const handleKeyDown = event => {
@@ -46,7 +48,7 @@ export default function DeleteModal({ type, item, onClose, onConfirm }) {
                 </div>
 
                 <p id="delete-modal-description" className="text-sm text-gray-300">
-                    Are you sure you want to delete <span className="font-medium text-white">{item.title}</span>? This action cannot be undone.
+                    Are you sure you want to delete <span className="font-medium text-white">{itemName}</span>? This action cannot be undone.
                 </p>
 
                 <div className="mt-5 flex justify-end gap-2 border-t border-gray-700 pt-4">
