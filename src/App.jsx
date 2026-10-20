@@ -12,7 +12,7 @@ import Notes from './pages/Notes';
 import Todos from './pages/Todos';
 
 export default function App() {
-  const basename = import.meta.env.BASE_URL;
+  // const basename = import.meta.env.BASE_URL;
   const [savedData] = useState(() => {
     const storedData = localStorage.getItem('projectflow-data');
     return storedData ? JSON.parse(storedData) : {};
@@ -103,7 +103,8 @@ export default function App() {
   }, [projects, selectedProjectId, activeTab]);
 
   return (
-    <Router basename={basename}>
+    // <Router basename={basename}>
+    <Router>
       <div className="flex h-screen bg-gray-900 text-gray-100">
         <Sidebar
           activeTab={activeTab}
