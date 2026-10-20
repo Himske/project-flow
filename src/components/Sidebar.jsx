@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import AddButton from './AddButton';
 import { BookmarkIcon, CogIcon, FileTextIcon, GridIcon, TodosListIcon } from "./icons";
 
-export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject }) {
+export default function Sidebar({ activeTab, onSelectTab, projects, selectedProjectId, onSelectProject, onOpenConfiguration }) {
   const navigate = useNavigate();
   const selectedProject = projects.find(project => project.id === selectedProjectId);
   const workspaceItems = [
@@ -85,17 +85,23 @@ export default function Sidebar({ activeTab, onSelectTab, projects, selectedProj
           </nav>
         </div>
 
-        <div className="p-3 border-t border-gray-800">
-          <button>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-gray-400">
-                <span className="text-sm font-medium">Local workspace</span>
-                <span className="text-xs text-gray-600">Changes saved in browser</span>
-              </div>
-              <span className="text-xs text-gray-600"><CogIcon className="size-5 shrink-0" /></span>
+      </div>
+      <div className="shrink-0 border-t border-gray-800 p-3">
+        <button
+          type="button"
+          onClick={onOpenConfiguration}
+          className="w-full text-gray-400 transition-colors hover:text-gray-200"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium">Local workspace</span>
+              <span className="text-xs text-gray-600">Changes saved in browser</span>
             </div>
-          </button>
-        </div>
+            <span>
+              <CogIcon className="size-5 shrink-0" />
+            </span>
+          </div>
+        </button>
       </div>
     </aside>
   );

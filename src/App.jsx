@@ -5,13 +5,11 @@ import Header from './components/Header';
 import ContentArea from './components/ContentArea';
 import ItemModal from './components/ItemModal';
 import DeleteModal from './components/DeleteModal';
+import ConfigurationModal from './components/ConfigurationModal';
 import Overview from './pages/Overview';
 import Links from './pages/Links';
 import Notes from './pages/Notes';
 import Todos from './pages/Todos';
-import projectData from '../data/projects.json';
-
-const initialProjects = projectData.projects;
 
 export default function App() {
   const [savedData] = useState(() => {
@@ -19,18 +17,19 @@ export default function App() {
     return storedData ? JSON.parse(storedData) : {};
   });
   const [projects, setProjects] = useState(() =>
-    Array.isArray(savedData.projects) ? savedData.projects : initialProjects
+    Array.isArray(savedData.projects) ? savedData.projects : []
   );
   const [activeTab, setActiveTab] = useState(savedData.activeTab || 'overview');
   const [selectedProjectId, setSelectedProjectId] = useState(() => {
     const savedProject = projects.find(project =>
       project.id === savedData.selectedProject || project.label === savedData.selectedProject
     );
-    return savedProject?.id || projects[0].id;
+    return savedProject?.id ?? projects[0]?.id ?? null;
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModal, setActiveModal] = useState(null);
   const [activeDelete, setActiveDelete] = useState(null);
+  const [configurationOpen, setConfigurationOpen] = useState(false);
   const selectedProject = projects.find(project => project.id === selectedProjectId) || projects[0];
 
   const saveModalItem = itemData => {
@@ -88,20 +87,21 @@ export default function App() {
           activeTab={activeTab}
           onSelectTab={setActiveTab}
           projects={projects}
-          selectedProjectId={selectedProject.id}
+          selectedProjectId={selectedProject?.id}
           onSelectProject={projectId => {
             setSelectedProjectId(projectId);
             setActiveTab('overview');
           }}
+          onOpenConfiguration={() => setConfigurationOpen(true)}
         />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
-            projectName={selectedProject.label}
+            projectName={selectedProject?.label || 'Local workspace'}
             searchQuery={searchQuery}
             onSearch={setSearchQuery}
           />
           <ContentArea>
-            <Routes>
+            {selectedProject ? <Routes>
               <Route
                 path="/"
                 element={
@@ -192,7 +192,18 @@ export default function App() {
                 }
               />
               <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+            </Routes> : (
+              <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+                <p className="text-sm text-gray-400">No projects found in local storage.</p>
+                <button
+                  type="button"
+                  onClick={() => setConfigurationOpen(true)}
+                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500"
+                >
+                  Import workspace
+                </button>
+              </div>
+            )}
           </ContentArea>
         </div>
       </div>
@@ -210,6 +221,28 @@ export default function App() {
           item={activeDelete.item}
           onClose={() => setActiveDelete(null)}
           onConfirm={confirmDelete}
+        />
+      )}
+      {configurationOpen && (
+        <ConfigurationModal
+          data={{
+            projects,
+            selectedProject: selectedProjectId,
+            activeTab,
+            timestamp: new Date().toISOString(),
+          }}
+          onClose={() => setConfigurationOpen(false)}
+          onImport={importedData => {
+            setProjects(importedData.projects);
+            const importedProject = importedData.projects.find(project =>
+              project.id === importedData.selectedProject || project.label === importedData.selectedProject
+            ) || importedData.projects[0];
+            setSelectedProjectId(importedProject.id);
+            setActiveTab(['overview', 'todos', 'notes', 'links'].includes(importedData.activeTab)
+              ? importedData.activeTab
+              : 'overview'
+            );
+          }}
         />
       )}
     </Router>
