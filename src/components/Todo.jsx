@@ -2,6 +2,9 @@ import { CalendarIcon, PencilIcon, TrashIcon } from "./icons";
 
 export default function Todo({ task, draggable, onDragStart, onEdit, onDelete }) {
     const priority = task.priority || 'MEDIUM';
+    const displayDate = /^\d{4}-\d{2}-\d{2}$/.test(task.date || '')
+        ? new Date(`${task.date}T00:00:00`).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+        : task.date;
     const getPriorityColor = (priority) => {
         const colors = { LOW: 'bg-gray-600', MEDIUM: 'bg-blue-500', HIGH: 'bg-orange-500', URGENT: 'bg-red-500' };
         return colors[priority] || 'bg-gray-600';
@@ -56,7 +59,7 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete })
                         </span>
                     ))}
                     <CalendarIcon className="text-gray-200 size-5 shrink-0" />
-                    <span className="text-xs text-gray-500 ml-auto">{task.date}</span>
+                    <span className="text-xs text-gray-500 ml-auto">{displayDate}</span>
                 </div>
             </div>
         </div>

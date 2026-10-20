@@ -8,6 +8,8 @@ export default function App() {
 }
 
 Todo:
-datepicker for tasks
 Add/edit/remove notes
-Change ⚡ to a better icon. Maybe use the favicon.
+Change ⚡ to a better icon.
+Move "+ Add..." buttons to better position
+Replace "+" on AddButton to an icon component
+Replace "+" on sidebar with the "+ New Project" button

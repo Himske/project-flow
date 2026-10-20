@@ -6,6 +6,25 @@ const typeLabels = {
     note: 'note',
 };
 
+const getTomorrowDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`;
+};
+
+const getDateInputValue = value => {
+    if (!value) return getTomorrowDate();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+
+    const legacyDate = value.match(/^([A-Za-z]+)\s+(\d{1,2})$/);
+    const date = legacyDate
+        ? new Date(`${legacyDate[1]} ${legacyDate[2]}, ${new Date().getFullYear()}`)
+        : new Date(value);
+
+    if (Number.isNaN(date.getTime())) return getTomorrowDate();
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+};
+
 export default function ItemModal({ type, item, onClose, onSave }) {
     const isEditing = Boolean(item);
     const [title, setTitle] = useState(item?.title || '');
@@ -19,7 +38,7 @@ export default function ItemModal({ type, item, onClose, onSave }) {
     const [status, setStatus] = useState(
         item?.status || (item?.completed ? 'done' : 'todo')
     );
-    const [date, setDate] = useState(item?.date || '');
+    const [date, setDate] = useState(() => getDateInputValue(item?.date));
 
     useEffect(() => {
         const handleKeyDown = event => {
@@ -50,7 +69,7 @@ export default function ItemModal({ type, item, onClose, onSave }) {
                 priority,
                 status,
                 completed: status === 'done',
-                date: date.trim(),
+                date: date || getTomorrowDate(),
             });
         } else {
             const content = description.trim();
@@ -180,10 +199,10 @@ export default function ItemModal({ type, item, onClose, onSave }) {
                             <label className="block">
                                 <span className={labelClass}>Date</span>
                                 <input
+                                    type="date"
                                     value={date}
                                     onChange={event => setDate(event.target.value)}
-                                    className={fieldClass}
-                                    placeholder="Oct 16"
+                                    className={`${fieldClass} [color-scheme:dark]`}
                                 />
                             </label>
                         </div>
