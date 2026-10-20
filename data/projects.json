@@ -1,412 +1,412 @@
 {
-    "projects": [
+  "projects": [
+    {
+      "id": "projectflow-platform",
+      "label": "ProjectFlow Platform",
+      "icon": "bolt",
+      "active": true,
+      "tasks": [
         {
-            "id": "projectflow-platform",
-            "label": "ProjectFlow Platform",
-            "active": true,
-            "tasks": [
-                {
-                    "id": 1,
-                    "title": "Add Markdown formatting preview for project docs",
-                    "tags": [
-                        "Notes",
-                        "Markdown"
-                    ],
-                    "date": "Oct 16",
-                    "completed": true
-                },
-                {
-                    "id": 2,
-                    "title": "Implement drag-and-drop or status toggle for board view",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX"
-                    ],
-                    "date": "Oct 14",
-                    "priority": "HIGH",
-                    "completed": true,
-                    "status": "done"
-                },
-                {
-                    "id": 4,
-                    "title": "Implement Markdown edit of notes",
-                    "tags": [
-                        "Notes"
-                    ],
-                    "priority": "MEDIUM",
-                    "completed": false,
-                    "date": "Oct 29",
-                    "description": "",
-                    "status": "todo"
-                },
-                {
-                    "title": "Delete functionality for tasks",
-                    "description": "",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX",
-                        "Todo"
-                    ],
-                    "priority": "HIGH",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450066
-                },
-                {
-                    "title": "Delete functionality for links",
-                    "description": "",
-                    "tags": [
-                        "Links"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450067
-                },
-                {
-                    "title": "Datepicker for tasks",
-                    "description": "",
-                    "tags": [
-                        "Todo"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450068
-                },
-                {
-                    "title": "Add, edit, preview and remove notes",
-                    "description": "Markdown editor",
-                    "tags": [
-                        "Notes"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450069
-                },
-                {
-                    "title": "Better logo for project",
-                    "description": "",
-                    "tags": [
-                        "Frontend"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450070
-                },
-                {
-                    "title": "Use JSON file for projects",
-                    "description": "Add export/import functionality in the settings button",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450071
-                },
-                {
-                    "title": "Remove quick add button",
-                    "description": "",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450072
-                },
-                {
-                    "title": "Remove completed from tasks",
-                    "description": "Tasks already have a status. Completed is just when status is done, so it's doesn't need another flag.",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX",
-                        "Todo"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450073
-                },
-                {
-                    "title": "Add project",
-                    "description": "Titel. What else?",
-                    "tags": [
-                        "Frontend",
-                        "UI/UX"
-                    ],
-                    "priority": "MEDIUM",
-                    "status": "todo",
-                    "completed": false,
-                    "date": "",
-                    "id": 1792071450074
-                }
-            ],
-            "notes": [
-                {
-                    "id": 1,
-                    "title": "Architecture Blueprint & FastAPI Integration",
-                    "snippet": "System Architecture ProjectFlow combines the responsiveness of...",
-                    "pinned": true
-                },
-                {
-                    "id": 2,
-                    "title": "Workspace UX Checklist & Best Practices",
-                    "snippet": "Craft / Notion Inspired Principles: 1. Focus First: Collapse sidebars when...",
-                    "pinned": false
-                }
-            ],
-            "links": [
-                {
-                    "id": 1,
-                    "title": "Tailwind CSS Modern Color Palette",
-                    "url": "https: //tailwindcss.com/",
-                    "description": "Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.",
-                    "category": "Design",
-                    "tags": [
-                        "Tailwind",
-                        "CSS"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Lucide Icons Directory",
-                    "url": "https://lucide.dev/",
-                    "description": "Clean, consistent open-source iconography for dashboard and productivity tool actions.",
-                    "category": "Tools",
-                    "tags": [
-                        "Icons",
-                        "UI"
-                    ]
-                },
-                {
-                    "id": 3,
-                    "title": "SQLAlchemy 2.1 Documentation",
-                    "url": "https://docs.sqlalchemy.org/en/21/",
-                    "description": "Modern ORM mapping, relationship mechanics, and SQLite connection pool configuration.",
-                    "category": "Docs",
-                    "tags": [
-                        "SQLite",
-                        "SQLAlchemy"
-                    ]
-                },
-                {
-                    "id": 4,
-                    "title": "FastAPI Official Documentation & Tutorial",
-                    "url": "https://fastapi.tiangolo.com/",
-                    "description": "Interactive API reference, dependency injection guides, and SQL databases tutorial with SQLAlchemy.",
-                    "category": "Docs",
-                    "tags": [
-                        "FastAPI",
-                        "Python"
-                    ]
-                },
-                {
-                    "id": 5,
-                    "title": "FastAPI Cloud",
-                    "url": "https://fastapicloud.com/",
-                    "description": "Deploy your FastAPI app to production in seconds with zero config, global infrastructure, and automatic scaling.",
-                    "category": "Docs",
-                    "tags": [
-                        "FastAPI",
-                        "Python"
-                    ]
-                }
-            ]
+          "id": 2,
+          "title": "Implement drag-and-drop or status toggle for board view",
+          "tags": [
+            "Frontend",
+            "UI/UX"
+          ],
+          "date": "2026-10-14",
+          "priority": "HIGH",
+          "completed": true,
+          "status": "done",
+          "description": ""
         },
         {
-            "id": "pulse-mobile",
-            "label": "Pulse Mobile Companion",
-            "active": false,
-            "tasks": [
-                {
-                    "id": 1,
-                    "title": "Create onboarding flow wireframes",
-                    "tags": [
-                        "Design",
-                        "Onboarding"
-                    ],
-                    "date": "Oct 20",
-                    "priority": "MEDIUM",
-                    "completed": true
-                },
-                {
-                    "id": 2,
-                    "title": "Test push notification preferences",
-                    "tags": [
-                        "Mobile",
-                        "Notifications"
-                    ],
-                    "date": "Oct 22",
-                    "completed": false,
-                    "status": "in-progress"
-                }
-            ],
-            "notes": [
-                {
-                    "id": 1,
-                    "title": "Mobile Onboarding Ideas",
-                    "snippet": "Keep setup brief, explain notification choices clearly, and let users skip optional steps.",
-                    "pinned": true
-                }
-            ],
-            "links": [
-                {
-                    "id": 1,
-                    "title": "React Native Documentation",
-                    "url": "https://reactnative.dev/docs/getting-started",
-                    "description": "Guides and reference material for building native mobile apps with React.",
-                    "category": "Docs",
-                    "tags": [
-                        "React Native",
-                        "Mobile"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Material Design 3",
-                    "url": "https://m3.material.io/",
-                    "description": "Design guidance and components for creating cohesive mobile experiences.",
-                    "category": "Design",
-                    "tags": [
-                        "UI",
-                        "Design"
-                    ]
-                }
-            ]
+          "title": "Delete functionality for tasks",
+          "description": "",
+          "tags": [
+            "Frontend",
+            "UI/UX",
+            "Todo"
+          ],
+          "priority": "HIGH",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450066
         },
         {
-            "id": "obsidian-tokens",
-            "label": "Obsidian UI Design Tokens",
-            "active": false,
-            "tasks": [
-                {
-                    "id": 1,
-                    "title": "Define semantic surface and text colors",
-                    "tags": [
-                        "Tokens",
-                        "Color"
-                    ],
-                    "date": "Oct 18",
-                    "priority": "HIGH",
-                    "completed": false
-                },
-                {
-                    "id": 2,
-                    "title": "Document spacing scale usage",
-                    "tags": [
-                        "Tokens",
-                        "Documentation"
-                    ],
-                    "date": "Oct 21",
-                    "completed": false
-                }
-            ],
-            "notes": [
-                {
-                    "id": 1,
-                    "title": "Token Naming Conventions",
-                    "snippet": "Use semantic names such as surface-primary and text-muted rather than component-specific color names.",
-                    "pinned": true
-                }
-            ],
-            "links": [
-                {
-                    "id": 1,
-                    "title": "Design Tokens Community Group",
-                    "url": "https://www.designtokens.org/",
-                    "description": "Community resources and specifications for interoperable design tokens.",
-                    "category": "Standards",
-                    "tags": [
-                        "Design Tokens",
-                        "Standards"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Style Dictionary",
-                    "url": "https://styledictionary.com/",
-                    "description": "A tool for transforming design tokens into platform-specific formats.",
-                    "category": "Tools",
-                    "tags": [
-                        "Tokens",
-                        "Build"
-                    ]
-                }
-            ]
+          "title": "Delete functionality for links",
+          "description": "",
+          "tags": [
+            "Links"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450067
         },
         {
-            "id": "semantic-search",
-            "label": "Semantic Note Vector Search",
-            "active": false,
-            "tasks": [
-                {
-                    "id": 1,
-                    "title": "Choose an embedding model for note indexing",
-                    "tags": [
-                        "Search",
-                        "Embeddings"
-                    ],
-                    "date": "Oct 19",
-                    "priority": "HIGH",
-                    "completed": false
-                },
-                {
-                    "id": 2,
-                    "title": "Build a relevance test set",
-                    "tags": [
-                        "Testing",
-                        "Search"
-                    ],
-                    "date": "Oct 23",
-                    "completed": false
-                }
-            ],
-            "notes": [
-                {
-                    "id": 1,
-                    "title": "Semantic Search Evaluation",
-                    "snippet": "Compare results using representative queries, expected matches, and feedback on relevance.",
-                    "pinned": false
-                }
-            ],
-            "links": [
-                {
-                    "id": 1,
-                    "title": "Sentence Transformers Documentation",
-                    "url": "https://www.sbert.net/",
-                    "description": "Documentation for creating sentence embeddings and semantic search systems.",
-                    "category": "Docs",
-                    "tags": [
-                        "Embeddings",
-                        "Python"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Chroma Documentation",
-                    "url": "https://docs.trychroma.com/",
-                    "description": "Guides for storing and querying embeddings in a vector database.",
-                    "category": "Tools",
-                    "tags": [
-                        "Vector Database",
-                        "Search"
-                    ]
-                }
-            ]
+          "title": "Datepicker for tasks",
+          "description": "",
+          "tags": [
+            "Todo"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450068
+        },
+        {
+          "title": "Add, edit, preview and remove notes",
+          "description": "Markdown editor",
+          "tags": [
+            "Notes"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450069
+        },
+        {
+          "title": "Use JSON file for projects",
+          "description": "Add export/import functionality in the settings button and move the button to the bottom.",
+          "tags": [
+            "Frontend",
+            "UI/UX"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450071
+        },
+        {
+          "title": "Remove quick add button",
+          "description": "",
+          "tags": [
+            "Frontend",
+            "UI/UX"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450072
+        },
+        {
+          "title": "Remove completed from tasks",
+          "description": "Tasks already have a status. Completed is just when status is done, so it's doesn't need another flag. Also make the checkbox clickable and make it change status to done when checked and todo when unchecked.",
+          "tags": [
+            "Frontend",
+            "UI/UX",
+            "Todo"
+          ],
+          "priority": "LOW",
+          "status": "todo",
+          "completed": false,
+          "date": "2026-10-21",
+          "id": 1792071450073
+        },
+        {
+          "title": "Add project",
+          "description": "Titel and description.",
+          "tags": [
+            "Frontend",
+            "UI/UX"
+          ],
+          "priority": "MEDIUM",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450074
+        },
+        {
+          "title": "Overview",
+          "description": "Only show pinned notes on the overview page and update the text on the overview page to reflect this.\nFilter links to only show at most the last 5 that has been added and update the text on the overview page to reflect this.",
+          "tags": [
+            "Notes",
+            "Frontend",
+            "UI/UX"
+          ],
+          "priority": "MEDIUM",
+          "status": "in-progress",
+          "completed": false,
+          "date": "2026-10-21",
+          "id": 1792071450075
+        },
+        {
+          "title": "Import project",
+          "description": "Import one project. If the project exists it will be replaced.",
+          "tags": [
+            "Frontend",
+            "UI/UX"
+          ],
+          "priority": "LOW",
+          "status": "todo",
+          "completed": false,
+          "date": "2026-10-21",
+          "id": 1792071450076
+        },
+        {
+          "title": "Remove placeholders from header",
+          "description": "Remove search and logged in user placeholders.",
+          "tags": [],
+          "priority": "LOW",
+          "status": "done",
+          "completed": true,
+          "date": "2026-10-21",
+          "id": 1792071450077
+        },
+        {
+          "title": "Update readme",
+          "description": "Generate a readme for github",
+          "tags": [],
+          "priority": "MEDIUM",
+          "status": "todo",
+          "completed": false,
+          "date": "2026-10-21",
+          "id": 1792071450078
+        },
+        {
+          "title": "Deploy to github",
+          "description": "Create a github action file to use for deploying.",
+          "tags": [],
+          "priority": "MEDIUM",
+          "status": "todo",
+          "completed": false,
+          "date": "2026-10-21",
+          "id": 1792071450079
         }
-    ]
+      ],
+      "notes": [
+        {
+          "id": 1,
+          "title": "Architecture Blueprint & FastAPI Integration",
+          "snippet": "**System** Architecture ProjectFlow combines the responsiveness",
+          "pinned": true,
+          "content": "**System** Architecture ProjectFlow combines the responsiveness",
+          "lastEdited": "just now"
+        },
+        {
+          "id": 2,
+          "title": "Workspace UX Checklist & Best Practices",
+          "snippet": "Craft / Notion Inspired Principles: 1. Focus First: Collapse sidebars when...",
+          "pinned": false
+        }
+      ],
+      "links": [
+        {
+          "id": 1,
+          "title": "Tailwind CSS Modern Color Palette",
+          "url": "https://tailwindcss.com/",
+          "description": "Slate, Zinc, Indigo, and Violet color scales for crafting refined dark mode UIs.",
+          "category": "Design",
+          "tags": [
+            "Tailwind",
+            "CSS"
+          ]
+        },
+        {
+          "title": "React Datepicker",
+          "url": "https://www.npmjs.com/package/react-datepicker",
+          "description": "A simple and reusable Datepicker component for React",
+          "category": "Frontend",
+          "tags": [],
+          "id": 6
+        }
+      ],
+      "description": "A simple project planner with a kanban style todo list, plus added option to store notes and links related to the project."
+    },
+    {
+      "id": "pulse-mobile",
+      "label": "Pulse Mobile Companion",
+      "icon": "mobile",
+      "active": false,
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Create onboarding flow wireframes",
+          "tags": [
+            "Design",
+            "Onboarding"
+          ],
+          "date": "Oct 20",
+          "priority": "MEDIUM",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Test push notification preferences",
+          "tags": [
+            "Mobile",
+            "Notifications"
+          ],
+          "date": "Oct 22",
+          "completed": false,
+          "status": "in-progress"
+        }
+      ],
+      "notes": [
+        {
+          "id": 1,
+          "title": "Mobile Onboarding Ideas",
+          "snippet": "Keep setup brief, explain notification choices clearly, and let users skip optional steps.",
+          "pinned": true
+        }
+      ],
+      "links": [
+        {
+          "id": 1,
+          "title": "React Native Documentation",
+          "url": "https://reactnative.dev/docs/getting-started",
+          "description": "Guides and reference material for building native mobile apps with React.",
+          "category": "Docs",
+          "tags": [
+            "React Native",
+            "Mobile"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Material Design 3",
+          "url": "https://m3.material.io/",
+          "description": "Design guidance and components for creating cohesive mobile experiences.",
+          "category": "Design",
+          "tags": [
+            "UI",
+            "Design"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "obsidian-tokens",
+      "label": "Obsidian UI Design Tokens",
+      "icon": "palette",
+      "active": false,
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Define semantic surface and text colors",
+          "tags": [
+            "Tokens",
+            "Color"
+          ],
+          "date": "Oct 18",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Document spacing scale usage",
+          "tags": [
+            "Tokens",
+            "Documentation"
+          ],
+          "date": "Oct 21",
+          "completed": false
+        }
+      ],
+      "notes": [
+        {
+          "id": 1,
+          "title": "Token Naming Conventions",
+          "snippet": "Use semantic names such as surface-primary and text-muted rather than component-specific color names.",
+          "pinned": true
+        }
+      ],
+      "links": [
+        {
+          "id": 1,
+          "title": "Design Tokens Community Group",
+          "url": "https://www.designtokens.org/",
+          "description": "Community resources and specifications for interoperable design tokens.",
+          "category": "Standards",
+          "tags": [
+            "Design Tokens",
+            "Standards"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Style Dictionary",
+          "url": "https://styledictionary.com/",
+          "description": "A tool for transforming design tokens into platform-specific formats.",
+          "category": "Tools",
+          "tags": [
+            "Tokens",
+            "Build"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "semantic-search",
+      "label": "Semantic Note Vector Search",
+      "icon": "brain",
+      "active": false,
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Choose an embedding model for note indexing",
+          "tags": [
+            "Search",
+            "Embeddings"
+          ],
+          "date": "Oct 19",
+          "priority": "HIGH",
+          "completed": false,
+          "description": "Test description",
+          "status": "todo"
+        },
+        {
+          "id": 2,
+          "title": "Build a relevance test set",
+          "tags": [
+            "Testing",
+            "Search"
+          ],
+          "date": "Oct 23",
+          "completed": false
+        }
+      ],
+      "notes": [
+        {
+          "id": 1,
+          "title": "Semantic Search Evaluation",
+          "snippet": "Compare results using representative queries, expected matches, and feedback on relevance.",
+          "pinned": false
+        }
+      ],
+      "links": [
+        {
+          "id": 1,
+          "title": "Sentence Transformers Documentation",
+          "url": "https://www.sbert.net/",
+          "description": "Documentation for creating sentence embeddings and semantic search systems.",
+          "category": "Docs",
+          "tags": [
+            "Embeddings",
+            "Python"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Chroma Documentation",
+          "url": "https://docs.trychroma.com/",
+          "description": "Guides for storing and querying embeddings in a vector database.",
+          "category": "Tools",
+          "tags": [
+            "Vector Database",
+            "Search"
+          ]
+        }
+      ]
+    }
+  ],
+  "selectedProject": "projectflow-platform",
+  "activeTab": "overview",
+  "timestamp": "2026-10-20T09:03:03.658Z"
 }
