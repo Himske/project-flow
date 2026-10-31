@@ -108,6 +108,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onD
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
                   onDelete={onDeleteTask}
+                  onToggleComplete={(t, checked) => onUpdateTaskStatus?.(t.id, checked ? 'done' : 'todo')}
                 />
               ))}
             </div>
@@ -134,6 +135,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onD
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
                   onDelete={onDeleteTask}
+                  onToggleComplete={(t, checked) => onUpdateTaskStatus?.(t.id, checked ? 'done' : 'todo')}
                 />
               ))}
             </div>
@@ -160,6 +162,7 @@ export default function Todos({ project, searchQuery, onAddTask, onEditTask, onD
                   onDragStart={event => event.dataTransfer.setData('text/plain', String(task.id))}
                   onEdit={onEditTask}
                   onDelete={onDeleteTask}
+                  onToggleComplete={(t, checked) => onUpdateTaskStatus?.(t.id, checked ? 'done' : 'todo')}
                 />
               ))}
             </div>
