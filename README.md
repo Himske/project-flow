@@ -6,7 +6,7 @@ ProjectFlow is a browser-based workspace for organizing projects, tasks, notes, 
 
 - Create projects with a name and description, edit their details, and delete projects with confirmation.
 - Review project progress and recent tasks, notes, and links on the Overview page.
-- Manage tasks in To do, In progress, and Done columns. Tasks support priorities, due dates, descriptions, tags, and drag-and-drop status changes.
+- Manage tasks in To do, In progress, and Done columns. Track project completion progress, mark tasks complete, edit or delete tasks, filter by tags, and use priorities, due dates, descriptions, and drag-and-drop status changes.
 - Create and organize notes, edit them with a Markdown editor, preview rendered Markdown, and pin important notes.
 - Save links with descriptions, categories, and tags.
 - Import and export workspace data as a JSON backup from the Local workspace menu.
