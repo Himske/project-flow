@@ -10,6 +10,8 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
   const navigate = useNavigate();
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   const { tasks = [], notes = [], links = [] } = project;
+  const latestLinks = links.slice(-5).reverse();
+  const pinnedNotes = notes.filter(note => note.pinned);
   const completedTasks = tasks.filter(task => task.completed || task.status === 'done').length;
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
   const todoTasks = tasks.filter(task => !task.completed && task.status !== 'done' && task.status !== 'in-progress').length;
@@ -126,10 +128,10 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Notes */}
+        {/* Pinned Notes */}
         <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-medium text-gray-400">RECENT NOTES</h2>
+            <h2 className="text-sm font-medium text-gray-400">PINNED NOTES</h2>
             <button
               onClick={() => {
                 onSelectTab('notes');
@@ -142,9 +144,9 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
           </div>
           <h3 className="text-lg font-semibold text-white mb-3">Knowledge base</h3>
           <div className="space-y-3">
-            {notes.length ? notes.map(note => (
+            {pinnedNotes.length ? pinnedNotes.map(note => (
               <NoteOverview key={note.id} note={note} />
-            )) : <p className="text-sm text-gray-500">No notes for this project yet.</p>}
+            )) : <p className="text-sm text-gray-500">No pinned notes for this project yet.</p>}
           </div>
         </div>
 
@@ -162,9 +164,9 @@ export default function Overview({ project, onSelectTab, onEditTask, onDeleteTas
               View all ↗
             </button>
           </div>
-          <h3 className="text-lg font-semibold text-white mb-3">Saved references</h3>
+          <h3 className="text-lg font-semibold text-white mb-3">Latest References</h3>
           <div className="space-y-3">
-            {links.length ? links.map(link => (
+            {latestLinks.length ? latestLinks.map(link => (
               <LinkOverview key={link.id} link={link} onEdit={onEditLink} onDelete={onDeleteLink} />
             )) : <p className="text-sm text-gray-500">No links for this project yet.</p>}
           </div>

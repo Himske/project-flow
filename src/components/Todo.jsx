@@ -1,6 +1,6 @@
 import { CalendarIcon, PencilIcon, TrashIcon } from "./icons";
 
-export default function Todo({ task, draggable, onDragStart, onEdit, onDelete }) {
+export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, onToggleComplete }) {
     const priority = task.priority || 'MEDIUM';
     const displayDate = /^\d{4}-\d{2}-\d{2}$/.test(task.date || '')
         ? new Date(`${task.date}T00:00:00`).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
@@ -20,7 +20,7 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete })
                 <input
                     type="checkbox"
                     checked={task.completed}
-                    onChange={() => { }}
+                    onChange={event => onToggleComplete?.(task, event.target.checked)}
                     className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
                 />
                 <div className="flex-1 min-w-0">
