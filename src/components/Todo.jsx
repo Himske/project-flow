@@ -46,12 +46,10 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, o
                 </span>
                 <div className="flex items-center gap-2">
                     {task.tags.map(tag => (
-                        <span key={tag} className="px-1.5 py-0.5 bg-gray-700 text-gray-400 text-xs rounded">
-                            {tag}
-                        </span>
+                        <span key={tag} className="text-gray-500 text-xs">#{tag}</span>
                     ))}
                     <CalendarIcon className="text-gray-200 size-5 shrink-0" />
-                    <span className="text-xs text-gray-500 ml-auto">{displayDate}</span>
+                    <span className="text-xs text-gray-300 ml-auto">{displayDate}</span>
                 </div>
             </div>
         </div>
