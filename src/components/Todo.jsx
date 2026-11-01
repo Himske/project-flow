@@ -1,4 +1,4 @@
-import { CalendarIcon, PencilIcon, TrashIcon } from "./icons";
+import { CalendarIcon, TrashIcon } from "./icons";
 
 export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, onToggleComplete }) {
     const priority = task.priority || 'MEDIUM';
@@ -12,7 +12,8 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, o
 
     return (
         <div
-            className="p-3 rounded-lg bg-gray-700/50 opacity-75"
+            className={`p-3 rounded-lg bg-gray-700/50 opacity-75 ${onEdit ? 'cursor-pointer hover:bg-gray-700' : ''}`}
+            onClick={() => onEdit?.(task)}
             draggable={draggable}
             onDragStart={onDragStart}
         >
@@ -20,6 +21,7 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, o
                 <input
                     type="checkbox"
                     checked={task.completed}
+                    onClick={event => event.stopPropagation()}
                     onChange={event => onToggleComplete?.(task, event.target.checked)}
                     className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-600 text-blue-500 focus:ring-blue-500"
                 />
@@ -27,20 +29,10 @@ export default function Todo({ task, draggable, onDragStart, onEdit, onDelete, o
                     <p className="text-sm text-gray-200 truncate">{task.title}</p>
                     <p className="text-xs text-gray-500 line-clamp-2">{task.description}</p>
                 </div>
-                {onEdit && (
-                    <button
-                        type="button"
-                        onClick={() => onEdit(task)}
-                        aria-label={`Edit ${task.title}`}
-                        className="text-gray-500 hover:text-gray-300"
-                    >
-                        <PencilIcon className="size-5 shrink-0" />
-                    </button>
-                )}
                 {onDelete && (
                     <button
                         type="button"
-                        onClick={() => onDelete(task)}
+                        onClick={event => { event.stopPropagation(); onDelete(task); }}
                         aria-label={`Delete ${task.title}`}
                         className="text-gray-500 hover:text-red-400"
                     >
