@@ -5,10 +5,11 @@ React 19 + Vite 8 + Tailwind CSS 4 single-page app (JavaScript/JSX, ES modules, 
 ## Commands
 - `npm install` – install dependencies
 - `npm run dev` – dev server (port 5173)
+- `npm test -- --run` – run Vitest once
 - `npm run build` – production build
 - `npm run lint` – ESLint (flat config in `eslint.config.js`)
 - `npm run preview` – preview the build
-- No test framework is configured.
+- Vitest is configured, but no test files exist yet.
 
 ## Structure
 - `src/main.jsx`, `src/App.jsx` – entry and routing (`react-router-dom`)
@@ -23,4 +24,5 @@ React 19 + Vite 8 + Tailwind CSS 4 single-page app (JavaScript/JSX, ES modules, 
 - Style with Tailwind utility classes (dark theme, e.g. `bg-gray-800`, `text-gray-200`).
 - Import icons from the `icons` index, not from individual icon files.
 - Markdown editing uses `@uiw/react-md-editor`.
+- Add tests with Vitest and run them with `npm test -- --run`.
 - Keep code lint-clean (`npm run lint`).

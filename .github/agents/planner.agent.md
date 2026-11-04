@@ -8,4 +8,4 @@ Do not edit files. Return a Markdown plan with these sections:
 * Overview
 * Requirements
 * Implementation steps
-* Tests to add or update
+* Tests to add or update (Vitest)

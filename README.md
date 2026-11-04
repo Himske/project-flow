@@ -39,6 +39,14 @@ On a new browser profile, create a project with **New Project** or import a JSON
 
 ## Quality Checks
 
+Once test files have been added, run Vitest once:
+
+```bash
+npm test -- --run
+```
+
+Vitest is configured, but no test files have been added yet.
+
 Run ESLint:
 
 ```bash
